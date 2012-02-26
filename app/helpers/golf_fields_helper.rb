@@ -1,0 +1,2 @@
+module GolfFieldsHelper
+end

@@ -1,0 +1,33 @@
+<%= form_for(@golf_hole) do |f| %>
+  <% if @golf_hole.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@golf_hole.errors.count, "error") %> prohibited this golf_hole from being saved:</h2>
+
+      <ul>
+      <% @golf_hole.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :golf_cource_id %><br />
+    <%= f.select :golf_cource_id, GolfCource.all.collect{|g| [g.name, g.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :hole_no %><br />
+    <%= f.number_field :hole_no %>
+  </div>
+  <div class="field">
+    <%= f.label :par %><br />
+    <%= f.number_field :par %>
+  </div>
+  <div class="field">
+    <%= f.label :yard %><br />
+    <%= f.number_field :yard %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

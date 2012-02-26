@@ -1,0 +1,25 @@
+<%= form_for(@golf_cource) do |f| %>
+  <% if @golf_cource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@golf_cource.errors.count, "error") %> prohibited this golf_cource from being saved:</h2>
+
+      <ul>
+      <% @golf_cource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :golf_field_id %><br />
+    <%= f.select :golf_field_id, GolfField.all.collect {|g| [g.name, g.id]}, {selected: @golf_cource.golf_field_id} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

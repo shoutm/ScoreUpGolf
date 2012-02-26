@@ -1,0 +1,29 @@
+<h1>Listing golf_holes</h1>
+
+<table>
+  <tr>
+    <th>Golf cource</th>
+    <th>Hole no</th>
+    <th>Par</th>
+    <th>Yard</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @golf_holes.each do |golf_hole| %>
+  <tr>
+    <td><%= golf_hole.golf_cource_id %></td>
+    <td><%= golf_hole.hole_no %></td>
+    <td><%= golf_hole.par %></td>
+    <td><%= golf_hole.yard %></td>
+    <td><%= link_to 'Show', golf_hole %></td>
+    <td><%= link_to 'Edit', edit_golf_hole_path(golf_hole) %></td>
+    <td><%= link_to 'Destroy', golf_hole, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Golf hole', new_golf_hole_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  golf_cource_id: 1
+  hole_no: 1
+  par: 1
+  yard: 1
+
+two:
+  golf_cource_id: 1
+  hole_no: 1
+  par: 1
+  yard: 1

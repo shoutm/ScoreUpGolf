@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Golf cource:</b>
+  <%= @golf_hole.golf_cource_id %>
+</p>
+
+<p>
+  <b>Hole no:</b>
+  <%= @golf_hole.hole_no %>
+</p>
+
+<p>
+  <b>Par:</b>
+  <%= @golf_hole.par %>
+</p>
+
+<p>
+  <b>Yard:</b>
+  <%= @golf_hole.yard %>
+</p>
+
+
+<%= link_to 'Edit', edit_golf_hole_path(@golf_hole) %> |
+<%= link_to 'Back', golf_holes_path %>
