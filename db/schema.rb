@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226101529) do
+ActiveRecord::Schema.define(:version => 20120226152639) do
 
   create_table "golf_cources", :force => true do |t|
     t.string   "name"
@@ -27,11 +27,24 @@ ActiveRecord::Schema.define(:version => 20120226101529) do
     t.datetime "updated_at"
   end
 
+  create_table "golf_fields_greens", :force => true do |t|
+    t.integer  "golf_field_id"
+    t.integer  "green_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "golf_holes", :force => true do |t|
     t.integer  "golf_cource_id"
     t.integer  "hole_no"
     t.integer  "par"
     t.integer  "yard"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "greens", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

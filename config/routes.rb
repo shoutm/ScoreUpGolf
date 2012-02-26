@@ -1,4 +1,8 @@
 Scoreupgolf::Application.routes.draw do
+  resources :golf_fields_greens
+
+  resources :greens
+
   resources :golf_holes
 
   resources :golf_cources

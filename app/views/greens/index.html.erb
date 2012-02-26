@@ -1,0 +1,23 @@
+<h1>Listing greens</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @greens.each do |green| %>
+  <tr>
+    <td><%= green.name %></td>
+    <td><%= link_to 'Show', green %></td>
+    <td><%= link_to 'Edit', edit_green_path(green) %></td>
+    <td><%= link_to 'Destroy', green, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Green', new_green_path %>

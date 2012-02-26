@@ -23,3 +23,11 @@ hole3 = GolfHole.create(golf_cource_id: cource1.id, hole_no: 3, par: 4, yard: 36
 hole4 = GolfHole.create(golf_cource_id: cource2.id, hole_no: 4, par: 5, yard: 360)
 hole5 = GolfHole.create(golf_cource_id: cource2.id, hole_no: 5, par: 3, yard: 360)
 hole6 = GolfHole.create(golf_cource_id: cource2.id, hole_no: 6, par: 4, yard: 360)
+
+Green.delete_all
+green1 = Green.create(name: "べント")
+green2 = Green.create(name: "コーライ")
+
+GolfFieldsGreen.delete_all
+GolfFieldsGreen.create(golf_field_id: field1.id, green_id: green1.id)
+GolfFieldsGreen.create(golf_field_id: field2.id, green_id: green2.id)
