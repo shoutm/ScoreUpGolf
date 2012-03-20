@@ -1,0 +1,29 @@
+<h1>Listing shot_results</h1>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Hole</th>
+    <th>Shot num</th>
+    <th>Pat num</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shot_results.each do |shot_result| %>
+  <tr>
+    <td><%= shot_result.player_id %></td>
+    <td><%= shot_result.hole_id %></td>
+    <td><%= shot_result.shot_num %></td>
+    <td><%= shot_result.pat_num %></td>
+    <td><%= link_to 'Show', shot_result %></td>
+    <td><%= link_to 'Edit', edit_shot_result_path(shot_result) %></td>
+    <td><%= link_to 'Destroy', shot_result, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shot result', new_shot_result_path %>

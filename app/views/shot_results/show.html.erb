@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Player:</b>
+  <%= @shot_result.player_id %>
+</p>
+
+<p>
+  <b>Hole:</b>
+  <%= @shot_result.hole_id %>
+</p>
+
+<p>
+  <b>Shot num:</b>
+  <%= @shot_result.shot_num %>
+</p>
+
+<p>
+  <b>Pat num:</b>
+  <%= @shot_result.pat_num %>
+</p>
+
+
+<%= link_to 'Edit', edit_shot_result_path(@shot_result) %> |
+<%= link_to 'Back', shot_results_path %>

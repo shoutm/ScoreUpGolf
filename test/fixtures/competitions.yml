@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  golf_field_id: 1
+  competition_date: 2012-03-20 23:36:50
+  firsthalf_cource_id: 1
+  secondhalf_cource_id: 1
+  host_user_id: 1
+
+two:
+  name: MyString
+  golf_field_id: 1
+  competition_date: 2012-03-20 23:36:50
+  firsthalf_cource_id: 1
+  secondhalf_cource_id: 1
+  host_user_id: 1

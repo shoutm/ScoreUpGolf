@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @competition.name %>
+</p>
+
+<p>
+  <b>Golf field:</b>
+  <%= @competition.golf_field_id %>
+</p>
+
+<p>
+  <b>Competition date:</b>
+  <%= @competition.competition_date %>
+</p>
+
+<p>
+  <b>Firsthalf cource:</b>
+  <%= @competition.firsthalf_cource_id %>
+</p>
+
+<p>
+  <b>Secondhalf cource:</b>
+  <%= @competition.secondhalf_cource_id %>
+</p>
+
+<p>
+  <b>Host user:</b>
+  <%= @competition.host_user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_competition_path(@competition) %> |
+<%= link_to 'Back', competitions_path %>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226152639) do
+ActiveRecord::Schema.define(:version => 20120320144649) do
+
+  create_table "competitions", :force => true do |t|
+    t.string   "name"
+    t.integer  "golf_field_id"
+    t.datetime "competition_date"
+    t.integer  "firsthalf_cource_id"
+    t.integer  "secondhalf_cource_id"
+    t.integer  "host_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "golf_cources", :force => true do |t|
     t.string   "name"
@@ -45,6 +56,29 @@ ActiveRecord::Schema.define(:version => 20120226152639) do
 
   create_table "greens", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parties", :force => true do |t|
+    t.integer  "party_no"
+    t.integer  "competition_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "players", :force => true do |t|
+    t.integer  "party_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shot_results", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "hole_id"
+    t.integer  "shot_num"
+    t.integer  "pat_num"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
