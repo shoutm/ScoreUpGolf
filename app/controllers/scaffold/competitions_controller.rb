@@ -1,4 +1,4 @@
-class CompetitionsController < ApplicationController
+class Scaffold::CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.json
   def index
@@ -44,8 +44,8 @@ class CompetitionsController < ApplicationController
 
     respond_to do |format|
       if @competition.save
-        format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
-        format.json { render json: @competition, status: :created, location: @competition }
+        format.html { redirect_to scaffold_competition_url(@competition), notice: 'Competition was successfully created.' }
+        format.json { render json: scaffold_competition_path(@competition), status: :created, location: @competition }
       else
         format.html { render action: "new" }
         format.json { render json: @competition.errors, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class CompetitionsController < ApplicationController
 
     respond_to do |format|
       if @competition.update_attributes(params[:competition])
-        format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
+        format.html { redirect_to scaffold_competition_url(@competition), notice: 'Competition was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class CompetitionsController < ApplicationController
     @competition.destroy
 
     respond_to do |format|
-      format.html { redirect_to competitions_url }
+      format.html { redirect_to scaffold_competitions_url }
       format.json { head :ok }
     end
   end

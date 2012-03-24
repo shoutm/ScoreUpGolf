@@ -21,13 +21,13 @@
     <td><%= competition.firsthalf_cource_id %></td>
     <td><%= competition.secondhalf_cource_id %></td>
     <td><%= competition.host_user_id %></td>
-    <td><%= link_to 'Show', competition %></td>
-    <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-    <td><%= link_to 'Destroy', competition, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', scaffold_competition_path(competition) %></td>
+    <td><%= link_to 'Edit', edit_scaffold_competition_path(competition) %></td>
+    <td><%= link_to 'Destroy', scaffold_competition_path(competition), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Competition', new_competition_path %>
+<%= link_to 'New Competition', new_scaffold_competition_path %>

@@ -1,9 +1,14 @@
 Scoreupgolf::Application.routes.draw do
+
+  namespace :scaffold do
+    resources :competitions
+    resources :users
+  end
+
   resources :shot_results
 
   resources :players
 
-  resources :competitions
 
   resources :parties
 
@@ -17,7 +22,6 @@ Scoreupgolf::Application.routes.draw do
 
   resources :golf_fields
 
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

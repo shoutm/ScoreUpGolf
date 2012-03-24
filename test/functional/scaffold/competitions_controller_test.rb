@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CompetitionsControllerTest < ActionController::TestCase
+class Scaffold::CompetitionsControllerTest < ActionController::TestCase
   setup do
     @competition = competitions(:one)
   end
@@ -21,7 +21,7 @@ class CompetitionsControllerTest < ActionController::TestCase
       post :create, competition: @competition.attributes
     end
 
-    assert_redirected_to competition_path(assigns(:competition))
+    assert_redirected_to scaffold_competition_path(assigns(:competition))
   end
 
   test "should show competition" do
@@ -36,7 +36,7 @@ class CompetitionsControllerTest < ActionController::TestCase
 
   test "should update competition" do
     put :update, id: @competition.to_param, competition: @competition.attributes
-    assert_redirected_to competition_path(assigns(:competition))
+    assert_redirected_to scaffold_competition_path(assigns(:competition))
   end
 
   test "should destroy competition" do
@@ -44,6 +44,6 @@ class CompetitionsControllerTest < ActionController::TestCase
       delete :destroy, id: @competition.to_param
     end
 
-    assert_redirected_to competitions_path
+    assert_redirected_to scaffold_competitions_path
   end
 end
