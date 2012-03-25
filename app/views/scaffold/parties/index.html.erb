@@ -1,0 +1,25 @@
+<h1>Listing parties</h1>
+
+<table>
+  <tr>
+    <th>Party no</th>
+    <th>Competition</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @parties.each do |party| %>
+  <tr>
+    <td><%= party.party_no %></td>
+    <td><%= party.competition_id %></td>
+    <td><%= link_to 'Show', scaffold_party_path(party) %></td>
+    <td><%= link_to 'Edit', edit_scaffold_party_path(party) %></td>
+    <td><%= link_to 'Destroy', scaffold_party_path(party), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Party', new_scaffold_party_path %>

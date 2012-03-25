@@ -1,0 +1,2 @@
+module Scaffold::ShotResultsHelper
+end

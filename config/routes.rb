@@ -3,16 +3,16 @@ Scoreupgolf::Application.routes.draw do
   namespace :scaffold do
     resources :competitions
     resources :users
+    resources :players
+    resources :parties
+    resources :shot_results
+    resources :golf_fields_greens
   end
 
-  resources :shot_results
-
-  resources :players
 
 
-  resources :parties
 
-  resources :golf_fields_greens
+
 
   resources :greens
 

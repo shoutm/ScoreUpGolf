@@ -1,0 +1,25 @@
+<h1>Listing players</h1>
+
+<table>
+  <tr>
+    <th>Party</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @players.each do |player| %>
+  <tr>
+    <td><%= player.party_id %></td>
+    <td><%= player.user_id %></td>
+    <td><%= link_to 'Show', scaffold_player_path(player) %></td>
+    <td><%= link_to 'Edit', edit_scaffold_player_path(player) %></td>
+    <td><%= link_to 'Destroy', scaffold_player_path(player), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Player', new_scaffold_player_path %>
