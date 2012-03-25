@@ -7,6 +7,7 @@ Scoreupgolf::Application.routes.draw do
     resources :parties
     resources :shot_results
     resources :golf_fields_greens
+    resources :greens
   end
 
 
@@ -14,7 +15,6 @@ Scoreupgolf::Application.routes.draw do
 
 
 
-  resources :greens
 
   resources :golf_holes
 

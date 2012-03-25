@@ -1,4 +1,4 @@
-class GreensController < ApplicationController
+class Scaffold::GreensController < ApplicationController
   # GET /greens
   # GET /greens.json
   def index
@@ -44,7 +44,7 @@ class GreensController < ApplicationController
 
     respond_to do |format|
       if @green.save
-        format.html { redirect_to @green, notice: 'Green was successfully created.' }
+        format.html { redirect_to scaffold_green_url(@green), notice: 'Green was successfully created.' }
         format.json { render json: @green, status: :created, location: @green }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class GreensController < ApplicationController
 
     respond_to do |format|
       if @green.update_attributes(params[:green])
-        format.html { redirect_to @green, notice: 'Green was successfully updated.' }
+        format.html { redirect_to scaffold_green_url(@green), notice: 'Green was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class GreensController < ApplicationController
     @green.destroy
 
     respond_to do |format|
-      format.html { redirect_to greens_url }
+      format.html { redirect_to scaffold_greens_url }
       format.json { head :ok }
     end
   end

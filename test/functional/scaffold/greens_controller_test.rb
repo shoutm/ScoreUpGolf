@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GreensControllerTest < ActionController::TestCase
+class Scaffold::GreensControllerTest < ActionController::TestCase
   setup do
     @green = greens(:one)
   end
@@ -21,7 +21,7 @@ class GreensControllerTest < ActionController::TestCase
       post :create, green: @green.attributes
     end
 
-    assert_redirected_to green_path(assigns(:green))
+    assert_redirected_to scaffold_green_path(assigns(:green))
   end
 
   test "should show green" do
@@ -36,7 +36,7 @@ class GreensControllerTest < ActionController::TestCase
 
   test "should update green" do
     put :update, id: @green.to_param, green: @green.attributes
-    assert_redirected_to green_path(assigns(:green))
+    assert_redirected_to scaffold_green_path(assigns(:green))
   end
 
   test "should destroy green" do
@@ -44,6 +44,6 @@ class GreensControllerTest < ActionController::TestCase
       delete :destroy, id: @green.to_param
     end
 
-    assert_redirected_to greens_path
+    assert_redirected_to scaffold_greens_path
   end
 end

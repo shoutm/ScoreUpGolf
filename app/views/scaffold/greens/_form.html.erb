@@ -1,4 +1,4 @@
-<%= form_for(@green) do |f| %>
+<%= form_for([:scaffold, @green]) do |f| %>
   <% if @green.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@green.errors.count, "error") %> prohibited this green from being saved:</h2>
