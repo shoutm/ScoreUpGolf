@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20120320144649) do
 
   create_table "shot_results", :force => true do |t|
     t.integer  "player_id"
-    t.integer  "hole_id"
+    t.integer  "golf_hole_id"
     t.integer  "shot_num"
     t.integer  "pat_num"
     t.datetime "created_at"

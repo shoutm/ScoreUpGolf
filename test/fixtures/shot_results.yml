@@ -2,12 +2,12 @@
 
 one:
   player_id: 1
-  hole_id: 1
+  golf_hole_id: 1
   shot_num: 1
   pat_num: 1
 
 two:
   player_id: 1
-  hole_id: 1
+  golf_hole_id: 1
   shot_num: 1
   pat_num: 1

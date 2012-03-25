@@ -14,7 +14,7 @@
 <% @shot_results.each do |shot_result| %>
   <tr>
     <td><%= shot_result.player_id %></td>
-    <td><%= shot_result.hole_id %></td>
+    <td><%= shot_result.golf_hole_id %></td>
     <td><%= shot_result.shot_num %></td>
     <td><%= shot_result.pat_num %></td>
     <td><%= link_to 'Show', scaffold_shot_result_path(shot_result) %></td>
