@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320144649) do
+ActiveRecord::Schema.define(:version => 20120325151038) do
 
   create_table "competitions", :force => true do |t|
     t.string   "name"
@@ -24,12 +24,18 @@ ActiveRecord::Schema.define(:version => 20120320144649) do
     t.datetime "updated_at"
   end
 
+  add_index "competitions", ["firsthalf_cource_id"], :name => "fk_competitions__firsthalf_cource_id"
+  add_index "competitions", ["golf_field_id"], :name => "fk_competitions__golf_field_id"
+  add_index "competitions", ["secondhalf_cource_id"], :name => "fk_competitions__secondhalf_cource_id"
+
   create_table "golf_cources", :force => true do |t|
     t.string   "name"
     t.integer  "golf_field_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "golf_cources", ["golf_field_id"], :name => "fk_golf_cources__golf_field_id"
 
   create_table "golf_fields", :force => true do |t|
     t.string   "name"
@@ -45,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20120320144649) do
     t.datetime "updated_at"
   end
 
+  add_index "golf_fields_greens", ["golf_field_id"], :name => "fk_golf_fields_greens__golf_field_id"
+  add_index "golf_fields_greens", ["green_id"], :name => "fk_golf_fields_greens__green_id"
+
   create_table "golf_holes", :force => true do |t|
     t.integer  "golf_cource_id"
     t.integer  "hole_no"
@@ -53,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20120320144649) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "golf_holes", ["golf_cource_id"], :name => "fk_golf_holes__golf_cource_id"
 
   create_table "greens", :force => true do |t|
     t.string   "name"
@@ -67,12 +78,17 @@ ActiveRecord::Schema.define(:version => 20120320144649) do
     t.datetime "updated_at"
   end
 
+  add_index "parties", ["competition_id"], :name => "fk_parties__competition_id"
+
   create_table "players", :force => true do |t|
     t.integer  "party_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "players", ["party_id"], :name => "fk_players__party_id"
+  add_index "players", ["user_id"], :name => "fk_players__user_id"
 
   create_table "shot_results", :force => true do |t|
     t.integer  "player_id"
@@ -82,6 +98,9 @@ ActiveRecord::Schema.define(:version => 20120320144649) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "shot_results", ["golf_hole_id"], :name => "fk_shot_results__golf_hole_id"
+  add_index "shot_results", ["player_id"], :name => "fk_shot_results__player_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
