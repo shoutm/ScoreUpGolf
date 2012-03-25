@@ -1,4 +1,4 @@
-<%= form_for(@golf_cource) do |f| %>
+<%= form_for([:scaffold, @golf_cource]) do |f| %>
   <% if @golf_cource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@golf_cource.errors.count, "error") %> prohibited this golf_cource from being saved:</h2>

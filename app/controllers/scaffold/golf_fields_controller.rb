@@ -1,4 +1,4 @@
-class GolfFieldsController < ApplicationController
+class Scaffold::GolfFieldsController < ApplicationController
   # GET /golf_fields
   # GET /golf_fields.json
   def index
@@ -44,7 +44,7 @@ class GolfFieldsController < ApplicationController
 
     respond_to do |format|
       if @golf_field.save
-        format.html { redirect_to @golf_field, notice: 'Golf field was successfully created.' }
+        format.html { redirect_to scaffold_golf_field_url(@golf_field), notice: 'Golf field was successfully created.' }
         format.json { render json: @golf_field, status: :created, location: @golf_field }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class GolfFieldsController < ApplicationController
 
     respond_to do |format|
       if @golf_field.update_attributes(params[:golf_field])
-        format.html { redirect_to @golf_field, notice: 'Golf field was successfully updated.' }
+        format.html { redirect_to scaffold_golf_field_url(@golf_field), notice: 'Golf field was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class GolfFieldsController < ApplicationController
     @golf_field.destroy
 
     respond_to do |format|
-      format.html { redirect_to golf_fields_url }
+      format.html { redirect_to scaffold_golf_fields_url }
       format.json { head :ok }
     end
   end

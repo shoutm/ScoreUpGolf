@@ -17,13 +17,13 @@
     <td><%= golf_hole.hole_no %></td>
     <td><%= golf_hole.par %></td>
     <td><%= golf_hole.yard %></td>
-    <td><%= link_to 'Show', golf_hole %></td>
-    <td><%= link_to 'Edit', edit_golf_hole_path(golf_hole) %></td>
-    <td><%= link_to 'Destroy', golf_hole, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', scaffold_golf_hole_path(golf_hole) %></td>
+    <td><%= link_to 'Edit', edit_scaffold_golf_hole_path(golf_hole) %></td>
+    <td><%= link_to 'Destroy', scaffold_golf_hole_path(golf_hole), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Golf hole', new_golf_hole_path %>
+<%= link_to 'New Golf hole', new_scaffold_golf_hole_path %>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GolfCourcesControllerTest < ActionController::TestCase
+class Scaffold::GolfCourcesControllerTest < ActionController::TestCase
   setup do
     @golf_cource = golf_cources(:one)
   end
@@ -21,7 +21,7 @@ class GolfCourcesControllerTest < ActionController::TestCase
       post :create, golf_cource: @golf_cource.attributes
     end
 
-    assert_redirected_to golf_cource_path(assigns(:golf_cource))
+    assert_redirected_to scaffold_golf_cource_path(assigns(:golf_cource))
   end
 
   test "should show golf_cource" do
@@ -36,7 +36,7 @@ class GolfCourcesControllerTest < ActionController::TestCase
 
   test "should update golf_cource" do
     put :update, id: @golf_cource.to_param, golf_cource: @golf_cource.attributes
-    assert_redirected_to golf_cource_path(assigns(:golf_cource))
+    assert_redirected_to scaffold_golf_cource_path(assigns(:golf_cource))
   end
 
   test "should destroy golf_cource" do
@@ -44,6 +44,6 @@ class GolfCourcesControllerTest < ActionController::TestCase
       delete :destroy, id: @golf_cource.to_param
     end
 
-    assert_redirected_to golf_cources_path
+    assert_redirected_to scaffold_golf_cources_path
   end
 end

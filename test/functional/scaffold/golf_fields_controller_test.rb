@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GolfFieldsControllerTest < ActionController::TestCase
+class Scaffold::GolfFieldsControllerTest < ActionController::TestCase
   setup do
     @golf_field = golf_fields(:one)
   end
@@ -21,7 +21,7 @@ class GolfFieldsControllerTest < ActionController::TestCase
       post :create, golf_field: @golf_field.attributes
     end
 
-    assert_redirected_to golf_field_path(assigns(:golf_field))
+    assert_redirected_to scaffold_golf_field_path(assigns(:golf_field))
   end
 
   test "should show golf_field" do
@@ -36,7 +36,7 @@ class GolfFieldsControllerTest < ActionController::TestCase
 
   test "should update golf_field" do
     put :update, id: @golf_field.to_param, golf_field: @golf_field.attributes
-    assert_redirected_to golf_field_path(assigns(:golf_field))
+    assert_redirected_to scaffold_golf_field_path(assigns(:golf_field))
   end
 
   test "should destroy golf_field" do
@@ -44,6 +44,6 @@ class GolfFieldsControllerTest < ActionController::TestCase
       delete :destroy, id: @golf_field.to_param
     end
 
-    assert_redirected_to golf_fields_path
+    assert_redirected_to scaffold_golf_fields_path
   end
 end

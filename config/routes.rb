@@ -8,19 +8,10 @@ Scoreupgolf::Application.routes.draw do
     resources :shot_results
     resources :golf_fields_greens
     resources :greens
+    resources :golf_holes
+    resources :golf_cources
+    resources :golf_fields
   end
-
-
-
-
-
-
-
-  resources :golf_holes
-
-  resources :golf_cources
-
-  resources :golf_fields
 
 
   # The priority is based upon order of creation:
