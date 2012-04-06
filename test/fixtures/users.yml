@@ -1,5 +1,45 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+admin:
+  id:       100
+  name:     "管理者1"
+  email:    "admin@test.com"
+  password: "password"
+  role:     100
+
+user1:
+  id:       1
+  name:     "ユーザ1"
+  email:    "user1@test.com"
+  password: "password"
+  role:     200
+
+user2:
+  id:       2
+  name:     "ユーザ2"
+  email:    "user1@test.com"
+  password: "password"
+  role:     200
+
+user3:
+  id:       3
+  name:     "ユーザ3"
+  email:    "user3@test.com"
+  password: "password"
+  role:     200
+
+user4:
+  id:       4
+  name:     "ユーザ4"
+  email:    "user4@test.com"
+  password: "password"
+  role:     200
+
+
+
+
+
+
 one:
   name: MyString
   openid: MyString

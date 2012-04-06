@@ -1,5 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+field1:
+  id:     1
+  name:   "ゴルフ場1"
+  region: 100
+
+field2:
+  id:     2
+  name:   "ゴルフ場2"
+  region: 100
+
+
 one:
   name: MyString
   region: 1

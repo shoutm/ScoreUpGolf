@@ -1,5 +1,14 @@
 Scoreupgolf::Application.routes.draw do
 
+
+  get 'competition/index'
+
+  get 'competition/view'
+
+  namespace :service do
+    get "competition_service/get_competition_information"
+  end
+
   namespace :scaffold do
     resources :competitions
     resources :users

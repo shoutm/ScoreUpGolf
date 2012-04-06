@@ -1,5 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+golf_fields_green1:
+  id:             1
+  golf_field_id:  1
+  green_id:       1
+
+golf_fields_green2:
+  id:             2
+  golf_field_id:  2
+  green_id:       2
+
+
 one:
   golf_field_id: 1
   green_id: 1

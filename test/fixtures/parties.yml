@@ -1,5 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+party1:
+  id:             1
+  party_no:       1
+  competition_id: 1
+
+
 one:
   party_no: 1
   competition_id: 1
