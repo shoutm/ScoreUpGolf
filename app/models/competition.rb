@@ -11,4 +11,5 @@ class Competition < ActiveRecord::Base
   validates :firsthalf_cource_id, presence: true
   validates :secondhalf_cource_id, presence: true
   validates :host_user_id, presence: true
+  validates :state, presence: true
 end

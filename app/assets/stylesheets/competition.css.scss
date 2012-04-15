@@ -1,0 +1,37 @@
+// Place all the styles related to the competition controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.competition {
+  #data_not_loaded {
+  }
+
+  #data_loaded {
+    display: none;
+    width: 480px;
+    font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+  
+    .shot_score {
+      text-align: center;
+      padding: 5px;
+      border: 2px solid #ddd;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .pat_score {
+      text-align: center;
+      padding: 5px;
+      border-left: 2px solid #ddd;
+      border-right: 2px solid #ddd;
+      border-bottom: 2px solid #ddd;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    em {
+      font-size: 300%;
+      margin: 0 30px 0;
+    }
+  }
+}

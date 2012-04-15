@@ -63,132 +63,6 @@ hole1_9:
   par:            5
   yard:           360
 
-hole1_10:
-  id:             110
-  golf_cource_id: 1
-  hole_no:        10
-  par:            5
-  yard:           360
-
-hole1_11:
-  id:             111
-  golf_cource_id: 1
-  hole_no:        11
-  par:            5
-  yard:           360
-
-hole1_12:
-  id:             112
-  golf_cource_id: 1
-  hole_no:        12
-  par:            5
-  yard:           360
-
-hole1_13:
-  id:             113
-  golf_cource_id: 1
-  hole_no:        13
-  par:            5
-  yard:           360
-
-hole1_14:
-  id:             114
-  golf_cource_id: 1
-  hole_no:        14
-  par:            5
-  yard:           360
-
-hole1_15:
-  id:             115
-  golf_cource_id: 1
-  hole_no:        15
-  par:            5
-  yard:           360
-
-hole1_16:
-  id:             116
-  golf_cource_id: 1
-  hole_no:        16
-  par:            5
-  yard:           360
-
-hole1_17:
-  id:             117
-  golf_cource_id: 1
-  hole_no:        17
-  par:            5
-  yard:           360
-
-hole1_18:
-  id:             118
-  golf_cource_id: 1
-  hole_no:        18
-  par:            5
-  yard:           360
-
-hole2_1:
-  id:             201
-  golf_cource_id: 2
-  hole_no:        1
-  par:            5
-  yard:           360
-
-hole2_2:
-  id:             202
-  golf_cource_id: 2
-  hole_no:        2
-  par:            5
-  yard:           360
-
-hole2_3:
-  id:             203
-  golf_cource_id: 2
-  hole_no:        3
-  par:            5
-  yard:           360
-
-hole2_4:
-  id:             204
-  golf_cource_id: 2
-  hole_no:        4
-  par:            5
-  yard:           360
-
-hole2_5:
-  id:             205
-  golf_cource_id: 2
-  hole_no:        5
-  par:            5
-  yard:           360
-
-hole2_6:
-  id:             206
-  golf_cource_id: 2
-  hole_no:        6
-  par:            5
-  yard:           360
-
-hole2_7:
-  id:             207
-  golf_cource_id: 2
-  hole_no:        7
-  par:            5
-  yard:           360
-
-hole2_8:
-  id:             208
-  golf_cource_id: 2
-  hole_no:        8
-  par:            5
-  yard:           360
-
-hole2_9:
-  id:             209
-  golf_cource_id: 2
-  hole_no:        9
-  par:            5
-  yard:           360
-
 hole2_10:
   id:             210
   golf_cource_id: 2
@@ -255,13 +129,15 @@ hole2_18:
 
 
 one:
-  golf_cource_id: 1
+  id: 100001
+  golf_cource_id: 100001
   hole_no: 1
   par: 1
   yard: 1
 
 two:
-  golf_cource_id: 1
+  id: 100002
+  golf_cource_id: 100002
   hole_no: 1
   par: 1
   yard: 1

@@ -7,45 +7,49 @@ encrypted_id        # user_id, player_idを暗号化した文字列
   - コンペ終了時にはすべて削除する
 
 ・フォーマット
-competition_status:
+localStorage.sug_competition_status:
   {
-    competition_id
-    loaded                # hole情報をすべて読み込んだ時点でtrueとする
-    holes:                # コンペ開始時にすべて読み込む
+    competition_id: <num>
+    loaded: <bool>        # hole情報をすべて読み込んだ時点でtrueとする
+    holes:                # コンペ開始時にすべて読み込む。プレイする順番に保存される
       [
         {
-          hole_id 
-          hole_no
-          par
-          yard
-          order           # プレイするホールの順番(1～18)
-        }
-        ..
-      ]
-    self_score:           # ホールが終了する度にエントリを追加する。定期的にバックグラウンドでサーバに結果を送信する
-      [
-        {
-          hole_id 
-          shot_num
-          pat_num
-          sended          # サーバに送信済みかどうか
-        }
-        ..
-      ]
-
-    other_scores:         # スコア閲覧時に随時読み込んで保存。
-      [
-        {
-          player_id
-          score:
+          id:      <num>
+          hole_no: <num>
+          par:     <num>
+          yard:    <num>
+          self_score:           # ホールが終了する度にエントリを追加する。定期的にバックグラウンドでサーバに結果を送信する
             {
-              hole_id
-              hole_no
-              shot_num
-              pat_num
+              shot_num: <num>
+              pat_num: <num>
+              sended: <num>     # サーバに送信済みかどうか
+            }
+          other_scores: 
+            {
+              <player_id>: 
+                {
+                  shot_num
+                  pat_num
+                }
             } 
-            ..
-        }
+        } ,
         ..
       ]
+  }
+
+localStorage.sug_party:
+  {
+    party_no: <num> 
+    self:
+      {
+        player_id: <num>
+        name: <string>
+      }
+    players:
+      {
+        <player_id>: 
+          {
+            name: <string>
+          }
+      }
   }

@@ -12,9 +12,11 @@ golf_fields_green2:
 
 
 one:
-  golf_field_id: 1
-  green_id: 1
+  id: 100001
+  golf_field_id: 100001
+  green_id: 100001
 
 two:
-  golf_field_id: 1
-  green_id: 1
+  id: 100002
+  golf_field_id: 100002
+  green_id: 100002

@@ -19,9 +19,11 @@ cource3:
 
 
 one:
+  id: 100001
   name: MyString
-  golf_field_id: 1
+  golf_field_id: 100001
 
 two:
+  id: 100002
   name: MyString
-  golf_field_id: 1
+  golf_field_id: 100002

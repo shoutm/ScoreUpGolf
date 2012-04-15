@@ -36,4 +36,10 @@ Scoreupgolf::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.logger = Logger.new(config.paths["log"].first)
+  config.logger.formatter = Logger::Formatter.new
+  config.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+  config.logger.level = Logger::DEBUG
+  config.colorize_logging = false
 end

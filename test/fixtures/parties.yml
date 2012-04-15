@@ -4,12 +4,17 @@ party1:
   id:             1
   party_no:       1
   competition_id: 1
+  reverse_cource_order: false
 
 
 one:
+  id: 100001
   party_no: 1
-  competition_id: 1
+  competition_id: 100001
+  reverse_cource_order: false
 
 two:
-  party_no: 1
-  competition_id: 1
+  id: 100002
+  party_no: 2
+  competition_id: 100002
+  reverse_cource_order: false

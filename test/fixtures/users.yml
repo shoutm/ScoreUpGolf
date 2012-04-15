@@ -41,15 +41,17 @@ user4:
 
 
 one:
+  id: 100001
   name: MyString
   openid: MyString
   email: MyString
   password: MyString
-  role: 1
+  role: 200
 
 two:
+  id: 100002
   name: MyString
   openid: MyString
   email: MyString
   password: MyString
-  role: 1
+  role: 200

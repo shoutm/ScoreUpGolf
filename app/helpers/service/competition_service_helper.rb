@@ -1,0 +1,2 @@
+module Service::CompetitionServiceHelper
+end

@@ -36,3 +36,4 @@ group :test do
 end
 
 gem 'mysql'
+gem 'ruby-openid'

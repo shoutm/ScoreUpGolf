@@ -6,7 +6,8 @@ Scoreupgolf::Application.routes.draw do
   get 'competition/view'
 
   namespace :service do
-    get "competition_service/get_competition_information"
+    get "competition_service/get_holes"
+    get "competition_service/get_players_in_joined_party"
   end
 
   namespace :scaffold do

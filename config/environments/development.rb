@@ -27,4 +27,10 @@ Scoreupgolf::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.logger = Logger.new(config.paths["log"].first) #=>log/<環境名>.logに出力される
+  config.logger.formatter = Logger::Formatter.new
+  config.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+  config.logger.level = Logger::DEBUG
+  config.colorize_logging = false
 end

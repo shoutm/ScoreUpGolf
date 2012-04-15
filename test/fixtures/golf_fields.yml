@@ -12,9 +12,11 @@ field2:
 
 
 one:
+  id:   100001
   name: MyString
   region: 1
 
 two:
+  id:   100002
   name: MyString
   region: 1

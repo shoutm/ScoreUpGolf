@@ -25,9 +25,11 @@ player4:
 
 
 one:
-  party_id: 1
-  user_id: 1
+  id: 100001
+  party_id: 100001
+  user_id: 100001
 
 two:
-  party_id: 1
-  user_id: 1
+  id: 100002
+  party_id: 100002
+  user_id: 100002
