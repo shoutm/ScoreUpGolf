@@ -20,6 +20,25 @@ player4:
   party_id: 1
   user_id:  4
 
+player5:
+  id:       5
+  party_id: 2
+  user_id:  1
+
+player6:
+  id:       6
+  party_id: 2
+  user_id:  2
+
+player7:
+  id:       7
+  party_id: 2
+  user_id:  3
+
+player8:
+  id:       8
+  party_id: 2
+  user_id:  4
 
 
 

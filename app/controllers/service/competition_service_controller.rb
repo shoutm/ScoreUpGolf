@@ -1,11 +1,13 @@
 class Service::CompetitionServiceController < ApplicationController
+  # 引数に指定されたcompetition_idに応じたコンペのホール情報をarrayとして返す
+  # arrayにはプレイする順番通りにホールを格納する
   def get_holes
     # 該当competitionにuserが参加しているか
     # TODO
 
     # CompetitionとUserからUserが所属するPartyを取得
     c = Competition.find(params[:competition_id])
-    party = get_joined_party(@user, c.parties)
+    party = PartyUtils::get_joined_party(c.parties, @user)
 
     # プレイするGolfHoleを取得
     first = c.firsthalf_cource.golf_holes.sort do |a,b|
@@ -30,39 +32,24 @@ class Service::CompetitionServiceController < ApplicationController
     render json: nil
   end
 
-  # 参加中のコンペにおいて、自分が所属するParty情報を取得する
-  def get_players_in_joined_party
-    # CompetitionとUserからUserが所属するPartyを取得
+  # 引数に指定されたcompetition_idに対応するコンペのparty情報を返す。(party内のplayer情報までは返さない)
+  # リクエストを要求したユーザが属するpartyにはselfフラグを立てて返す
+  def get_parties
     c = Competition.find(params[:competition_id])
-    party = get_joined_party(@user, c.parties)
-
-    retval = party.players
-
-    if params[:without_myself]
-      retval.delete_if do |x|
-        x.user_id == @user.id
+    self_party = PartyUtils::get_joined_party(c.parties, @user)
+    party_json = JSON.parse(c.parties.to_json)
+    party_json.each do |party|
+      if party["id"] == self_party.id
+        party["self"] = true
+        break
       end
     end
-
+    
     respond_to do |format|
-      format.json { render json: retval }
+      format.json { render json: party_json } 
     end
   rescue ActiveRecord::RecordNotFound => e 
     # TODO 
     render json: nil
-  end
-
-private 
-  # 複数のパーティーからuserが参加しているパーティーを探す
-  def get_joined_party(user, parties)
-    parties.each do |p|
-      p.players.each do |p2|
-        if p2.user == user
-          return p
-        end
-      end
-    end
-
-    return nil
   end
 end

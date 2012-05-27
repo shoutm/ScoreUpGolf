@@ -1,13 +1,17 @@
 Scoreupgolf::Application.routes.draw do
 
 
+
   get 'competition/index'
 
   get 'competition/view'
 
   namespace :service do
-    get "competition_service/get_holes"
-    get "competition_service/get_players_in_joined_party"
+    get  "player_service/get_scores"
+    post "player_service/set_score"
+    get  "competition_service/get_holes"
+    get  "competition_service/get_parties"
+    get  "party_service/get_party_with_user"
   end
 
   namespace :scaffold do

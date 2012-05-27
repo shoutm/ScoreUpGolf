@@ -9,7 +9,7 @@
 //= require jquery.activity-indicator-1.0.0.min.js
 //= require_tree .
 
-function getQuerystringHash(url) {
+function convertQuerystringToHash(url) {
   var vars = [], hash;
   var hashes = url.slice(url.indexOf('?') + 1).split('&');
   for(var i = 0; i < hashes.length; i++) {
@@ -18,6 +18,16 @@ function getQuerystringHash(url) {
     vars[hash[0]] = hash[1];
   }
   return vars;
+}
+
+function convertHashToQuerystring(hash) {
+  var query = "";
+
+  for(key in hash) {
+    query +=  key + "=" + hash[key] + "&"
+  }
+
+  return query;
 }
 
 function containsKeyInHash(key, hash) {
@@ -41,3 +51,14 @@ function getCompetitionStatus() {
   return JSON.parse(localStorage.sug_competition_status);
 }
 
+function storeParty(obj) {
+  localStorage.sug_party = JSON.stringify(obj);
+  return;
+}
+
+function getParty() {
+  if(localStorage.sug_party == null){
+    return null;
+  }
+  return JSON.parse(localStorage.sug_party);
+}

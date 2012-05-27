@@ -3,17 +3,18 @@
 </div>
 <div id="data_loaded">
   <div class="header">
+    Hole No: <label id="hole_no"></label><br>
   </div>
   <div class="score_form">
     <div class="shot_score">
-      <%= image_tag("/assets/minus.png", size: "35x35") %>
-      <em>5</em>
-      <%= image_tag("/assets/plus.png", size: "35x35") %>
+      <%= image_tag("/assets/minus.png", id: "shot_score_minus", size: "35x35") %>
+      <em id="shot_num">4</em>
+      <%= image_tag("/assets/plus.png", id: "shot_score_plus", size: "35x35") %>
     </div> 
     <div class="pat_score">
-      <%= image_tag("/assets/minus.png", size: "35x35") %>
-      <em>5</em>
-      <%= image_tag("/assets/plus.png", size: "35x35") %>
+      <%= image_tag("/assets/minus.png", id: "pat_score_minus", size: "35x35") %>
+      <em id="pat_num">2</em>
+      <%= image_tag("/assets/plus.png", id: "pat_score_plus", size: "35x35") %>
     </div> 
   </div>
   <div class="footer">

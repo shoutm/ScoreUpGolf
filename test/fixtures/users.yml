@@ -17,7 +17,7 @@ user1:
 user2:
   id:       2
   name:     "ユーザ2"
-  email:    "user1@test.com"
+  email:    "user2@test.com"
   password: "password"
   role:     200
 

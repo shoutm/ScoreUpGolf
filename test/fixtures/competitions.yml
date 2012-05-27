@@ -10,6 +10,16 @@ competition1:
   host_user_id:         1
   state:                40
 
+competition2:
+  id:                   2
+  name:                 "コンペ2"
+  golf_field_id:        1
+  competition_date:     "2012-01-01 00:00:00"
+  firsthalf_cource_id:  1
+  secondhalf_cource_id: 2
+  host_user_id:         1
+  state:                30
+
 one:
   id: 100001
   name: MyString

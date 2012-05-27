@@ -6,6 +6,11 @@ party1:
   competition_id: 1
   reverse_cource_order: false
 
+party2:
+  id:             2
+  party_no:       1
+  competition_id: 2
+  reverse_cource_order: false
 
 one:
   id: 100001

@@ -22,7 +22,7 @@ localStorage.sug_competition_status:
             {
               shot_num: <num>
               pat_num: <num>
-              sended: <num>     # サーバに送信済みかどうか
+              sent: <bool>    # サーバに送信済みかどうか
             }
           other_scores: 
             {
@@ -45,7 +45,7 @@ localStorage.sug_party:
         player_id: <num>
         name: <string>
       }
-    players:
+    others:
       {
         <player_id>: 
           {
