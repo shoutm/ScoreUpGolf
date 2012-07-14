@@ -8,8 +8,8 @@
 
   #data_loaded {
     display: none;
-    width: 480px;
     font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+    margin: 10px;
   
     .shot_score {
       text-align: center;
@@ -17,6 +17,8 @@
       border: 2px solid #ddd;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
+      background-color: white;
+      box-shadow: 3px 3px 5px 0px #777;
     }
 
     .pat_score {
@@ -27,7 +29,38 @@
       border-bottom: 2px solid #ddd;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
+      background-color: white;
+      box-shadow: 3px 3px 5px 0px #777;
     }
+
+    #footer {
+      width: 100%;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 8px;
+      box-sizing: border-box;
+
+      .full_width {
+        width: 100%;
+        height: 60px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      .half_width {
+        width: 49%;
+        height: 60px;
+        padding: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+      }
+
+      button {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
 
     em {
       font-size: 300%;

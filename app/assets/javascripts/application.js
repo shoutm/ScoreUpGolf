@@ -7,7 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.activity-indicator-1.0.0.min.js
-//= require_tree .
+//= require_tree ./utils
+//= require_tree ./models
 
 function convertQuerystringToHash(url) {
   var vars = [], hash;

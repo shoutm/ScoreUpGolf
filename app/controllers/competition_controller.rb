@@ -5,4 +5,7 @@ class CompetitionController < ApplicationController
   def view
   end
 
+  def wait
+  end
+
 end

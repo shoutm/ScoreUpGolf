@@ -1,3 +1,5 @@
+<%= javascript_include_tag "logic/competition_scoring" %>
+<%= javascript_include_tag "footer" %>
 <div id="data_not_loaded">
   <%= button_tag "Load competition data", id: "load_data_button" %>
 </div>
@@ -17,7 +19,15 @@
       <%= image_tag("/assets/plus.png", id: "pat_score_plus", size: "35x35") %>
     </div> 
   </div>
-  <div class="footer">
-    <%= button_tag "決定", id: "submit" %>
+  <div id="footer">
+    <div class="full_width">
+      <%= button_tag "このホールのスコアを送信", id: "submit" %>
+    </div>
+    <div class="half_width">
+      <%= button_tag "自分の組のスコアを確認", id: "my_party_score" %>
+    </div>
+    <div class="half_width">
+      <%= button_tag "他の組のスコアを確認", id: "other_party_score" %>
+    </div>
   </div>
 </div>

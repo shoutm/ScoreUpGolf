@@ -26,7 +26,7 @@ Scoreupgolf::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+#config.assets.debug = true
 
   config.logger = Logger.new(config.paths["log"].first) #=>log/<環境名>.logに出力される
   config.logger.formatter = Logger::Formatter.new
