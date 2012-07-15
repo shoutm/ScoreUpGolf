@@ -29,7 +29,7 @@ class SugParty
   # localStorageに保存されたJSONオブジェクトからSugPartyオブジェクトを作成するクラスメソッド
   # localStorageにデータが保存されていなかった場合nullを返し、SugPartyオブジェクトがloadできた場合、そのオブジェクトを返す
   @load: ->
-    if(typeof(localStorage.sug_competition_status) == "undefined")
+    if(typeof(localStorage.sug_party) == "undefined")
       return false
     json = JSON.parse(localStorage.sug_party)
     party = new SugParty()

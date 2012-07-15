@@ -23,8 +23,8 @@ $ ->
       self_party_json = get_self_party(parties_json)
       url4 = "/service/party_service/get_party_with_user.json?party_id=" + self_party_json.id
       self_party_json2 = JSON.parse($.ajax({type: "GET", url: url4, dataType: "json", async: false }).responseText)
-      cstatus = initialize_sug_competition_status(holes_json, self_party_json2, selfScore_json)
-      cstatus.competition_id = hash.competition_id
+      cstatus = new SugCompetitionStatus(hash.competition_id)
+      cstatus.set_holes(holes_json, self_party_json2, selfScore_json)
 
       # localStorageのsug_partyを作成する
       partyinfo = new SugParty()
@@ -33,7 +33,7 @@ $ ->
 
       cstatus.loaded = true
       #window.stop_waiting()
-      storeCompetitionStatus(cstatus) 
+      cstatus.save()
       partyinfo.save()
 
       data_loaded()
@@ -41,6 +41,7 @@ $ ->
   # submitボタンが押された際の動作
   $("#submit").click ->
     cstatus = getCompetitionStatus()
+    #cstatus = SugCompetitionStatus.load()
     hole_no = $("#hole_no").text()
     # holesを頭からシークし、hole_noの値が一致するホールを探し、スコアを保存する
     for hole in cstatus.holes
@@ -55,6 +56,7 @@ $ ->
   # 定期的にサーバとデータを同期する
   setInterval ->
     cstatus = getCompetitionStatus()
+    #cstatus = SugCompetitionStatus.load()
     partyinfo = SugParty.load()
     #### 定期的に自分のスコアのうち未送信データをサーバに送信する
     # holesを頭からシークし、sent=falseのものをサーバへ送信する
@@ -90,6 +92,7 @@ $ ->
 initialize_page = ->
   # localStorageからsug_competition_statusを取得
   cstatus = getCompetitionStatus()
+  #cstatus = SugCompetitionStatus.load()
   partyinfo = SugParty.load()
   
   hash = convertQuerystringToHash(window.location.href)
@@ -109,6 +112,7 @@ initialize_page = ->
 page_load = ->
   # holesを頭からシークし、self_scoreが空であるホールを探し、hole_noをセットする(これが次プレイするホール)
   cstatus = getCompetitionStatus()
+  #cstatus = SugCompetitionStatus.load()
   next_hole_found = false
   for hole in cstatus.holes
     unless hole.self_score.shot_num
@@ -126,39 +130,6 @@ data_loaded = ->
   $("#data_loaded").show()
   $("#data_not_loaded").hide()
   page_load()
-
-
-
-# localStorageのsug_competition_statusのholes情報を初期化するための関数
-# holes       : CompetitionService#get_*で取得したarray(JSON)
-# self_party  : 自分が所属するpartyのarray(JSON)
-# selfScore   : PlayerService#get_scoresで取得したarray(JSON)
-initialize_sug_competition_status = (holes, self_party, selfScore) ->
-  cstatus = {}
-  cstatus.holes = []
-  for h in holes
-    hole = {} 
-    hole.id = h.id
-    hole.hole_no = h.hole_no
-    hole.par = h.par
-    hole.yard = h.yard
-    
-    # set self score
-    hole.self_score = {}
-    score = window.find_array_by_id(selfScore, "golf_hole_id", h.id)
-    if score
-      hole.self_score.shot_num = score.shot_num
-      hole.self_score.pat_num = score.pat_num
-      hole.self_score.sent = true
-    
-    # set others score
-    other_scores = {}
-    for p in self_party.players
-      other_scores[p.user_id] = {} unless p.self
-    hole.other_scores = other_scores
-
-    cstatus.holes.push hole   
-  return cstatus
 
 
 

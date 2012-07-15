@@ -18,8 +18,8 @@ window.convertHashToQuerystring = (hash) ->
 
 
 
-# 引数に与えられたarrayのid要素に対して、keyが一致した要素を返却する
-# ただし、arrayは要素に必ずid属性を持たなければならない
+# 連想配列を含んだarrayを引数に取り、その連想配列のid要素がvalueである
+# 場合にその連想配列を返す
 window.find_array_by_id = (array, id, key) ->
   for i in array
     return i if i[id] == key
