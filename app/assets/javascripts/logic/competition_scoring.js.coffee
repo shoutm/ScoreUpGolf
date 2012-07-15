@@ -40,28 +40,24 @@ $ ->
 
   # submitボタンが押された際の動作
   $("#submit").click ->
-    cstatus = getCompetitionStatus()
-    #cstatus = SugCompetitionStatus.load()
+    cstatus = SugCompetitionStatus.load()
     hole_no = $("#hole_no").text()
     # holesを頭からシークし、hole_noの値が一致するホールを探し、スコアを保存する
     for hole in cstatus.holes
       if eval(hole_no) == eval(hole.hole_no)
-        hole.self_score.shot_num = eval($("#shot_num").text())
-        hole.self_score.pat_num = eval($("#pat_num").text())
-        hole.self_score.sent = false
-        storeCompetitionStatus(cstatus) 
+        hole.set_self_score(eval($("#shot_num").text()), eval($("#pat_num").text()), false)
+        cstatus.save()
         break
     page_load()
 
   # 定期的にサーバとデータを同期する
   setInterval ->
-    cstatus = getCompetitionStatus()
-    #cstatus = SugCompetitionStatus.load()
+    cstatus = SugCompetitionStatus.load()
     partyinfo = SugParty.load()
     #### 定期的に自分のスコアのうち未送信データをサーバに送信する
     # holesを頭からシークし、sent=falseのものをサーバへ送信する
     for hole in cstatus.holes
-      if hole.self_score.sent != null && hole.self_score.sent == false
+      if hole.self_score && hole.self_score.sent == false
         player_id = partyinfo.self.player_id
         data = convertHashToQuerystring({player_id: player_id, golf_hole_id: hole.id, shot_num: hole.self_score.shot_num, pat_num: hole.self_score.pat_num})
         url = "/service/player_service/set_score"
@@ -74,7 +70,7 @@ $ ->
             success: ->
               hole.self_score.sent = true
           })
-    storeCompetitionStatus(cstatus)
+    cstatus.save()
 
     #### 定期的に自分のパーティの情報をサーバから取得する
     for player_id in Object.keys(partyinfo.others)
@@ -91,8 +87,7 @@ $ ->
 
 initialize_page = ->
   # localStorageからsug_competition_statusを取得
-  cstatus = getCompetitionStatus()
-  #cstatus = SugCompetitionStatus.load()
+  cstatus = SugCompetitionStatus.load()
   partyinfo = SugParty.load()
   
   hash = convertQuerystringToHash(window.location.href)
@@ -111,11 +106,10 @@ initialize_page = ->
 # ホール入力が完了した際など、ホールの切り替えの際の処理を実施する
 page_load = ->
   # holesを頭からシークし、self_scoreが空であるホールを探し、hole_noをセットする(これが次プレイするホール)
-  cstatus = getCompetitionStatus()
-  #cstatus = SugCompetitionStatus.load()
+  cstatus = SugCompetitionStatus.load()
   next_hole_found = false
   for hole in cstatus.holes
-    unless hole.self_score.shot_num
+    unless hole.self_score
       $("#hole_no").text(hole.hole_no)
       $("#shot_num").text(hole.par)
       next_hole_found = true
