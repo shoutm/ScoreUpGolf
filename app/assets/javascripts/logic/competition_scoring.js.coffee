@@ -2,86 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# localStorageのsug_competition_statusのholes情報を初期化するための関数
-# holes       : CompetitionService#get_*で取得したarray(JSON)
-# self_party  : 自分が所属するpartyのarray(JSON)
-# selfScore   : PlayerService#get_scoresで取得したarray(JSON)
-initialize_sug_competition_status = (holes, self_party, selfScore) ->
-  cstatus = {}
-  cstatus.holes = []
-  for h in holes
-    hole = {} 
-    hole.id = h.id
-    hole.hole_no = h.hole_no
-    hole.par = h.par
-    hole.yard = h.yard
-    
-    # set self score
-    hole.self_score = {}
-    score = window.find_array_by_id(selfScore, "golf_hole_id", h.id)
-    if score
-      hole.self_score.shot_num = score.shot_num
-      hole.self_score.pat_num = score.pat_num
-      hole.self_score.sent = true
-    
-    # set others score
-    other_scores = {}
-    for p in self_party.players
-      other_scores[p.user_id] = {} unless p.self
-    hole.other_scores = other_scores
-
-    cstatus.holes.push hole   
-  return cstatus
-
-# partyが複数格納されたArray(JSONオブジェクト)からselfフラグが立っているpartyを返す
-get_self_party = (parties) ->
-  for party in parties
-    return party if party.self
-
 $ ->
-  # ホール入力が完了した際など、ホールの切り替えの際の処理を実施する
-  page_load = ->
-    # holesを頭からシークし、self_scoreが空であるホールを探し、hole_noをセットする(これが次プレイするホール)
-    cstatus = getCompetitionStatus()
-    next_hole_found = false
-    for hole in cstatus.holes
-      unless hole.self_score.shot_num
-        $("#hole_no").text(hole.hole_no)
-        $("#shot_num").text(hole.par)
-        next_hole_found = true
-        break
-    # スコアが全てセットされていた場合、waitページへ移動する
-    document.location = "/competition/wait" unless next_hole_found
-
-  # 初期データがロードされた際に呼び出される関数
-  data_loaded = ->
-    $("#data_loaded").show()
-    $("#data_not_loaded").hide()
-    page_load()
-
-  
-  # ページロード時の初期化(indexアクション時)
-  if window.location.pathname.indexOf("/competition/index") == 0
-    # localStorageからsug_competition_statusを取得
-    cstatus = getCompetitionStatus()
-    partyinfo = getParty()
-    
-    hash = convertQuerystringToHash(window.location.href)
-    unless containsKeyInHash("competition_id", hash)
-      # TODO competition_idを含まない場合、エラーを示す必要。以下は暫定対処
-      alert("competition_id is not provided.")
-      return
-
-    # localStorageにsug_competition_statusがロード済みであり、かつ現在のコンペと合致した情報であった場合は
-    # 正しい情報がロード済みであるとしてコンペ画面をロードする。
-    if cstatus && cstatus.loaded && cstatus.competition_id == hash.competition_id && partyinfo
-      data_loaded()
+  # ページロード時の初期化
+  initialize_page()
 
   # ページロード時にlocalStorageが初期化されていなければロードボタンを押して初期化する
   $("#load_data_button").click ->
     # URL上のcompetition_idを取得する
     hash = convertQuerystringToHash(window.location.href)
-    if containsKeyInHash("competition_id", hash)
+    if hash["competition_id"] # containsKeyInHash("competition_id", hash)
       #window.start_waiting("white")
 
       # localStorageのsug_competition_statusを作成する
@@ -155,3 +84,85 @@ $ ->
   , 10000
 
   return 
+
+
+
+initialize_page = ->
+  # localStorageからsug_competition_statusを取得
+  cstatus = getCompetitionStatus()
+  partyinfo = getParty()
+  
+  hash = convertQuerystringToHash(window.location.href)
+  unless hash["competition_id"]
+    # TODO competition_idを含まない場合、エラーを示す必要。以下は暫定対処
+    alert("competition_id is not provided.")
+    return
+
+  # localStorageにsug_competition_statusがロード済みであり、かつ現在のコンペと合致した情報であった場合は
+  # 正しい情報がロード済みであるとしてコンペ画面をロードする。
+  if cstatus && cstatus.loaded && cstatus.competition_id == hash.competition_id && partyinfo
+    data_loaded()
+
+
+
+# ホール入力が完了した際など、ホールの切り替えの際の処理を実施する
+page_load = ->
+  # holesを頭からシークし、self_scoreが空であるホールを探し、hole_noをセットする(これが次プレイするホール)
+  cstatus = getCompetitionStatus()
+  next_hole_found = false
+  for hole in cstatus.holes
+    unless hole.self_score.shot_num
+      $("#hole_no").text(hole.hole_no)
+      $("#shot_num").text(hole.par)
+      next_hole_found = true
+      break
+  # スコアが全てセットされていた場合、waitページへ移動する
+  document.location = "/competition/wait" unless next_hole_found
+
+
+
+# 初期データがロードされた際に呼び出される関数
+data_loaded = ->
+  $("#data_loaded").show()
+  $("#data_not_loaded").hide()
+  page_load()
+
+
+
+# localStorageのsug_competition_statusのholes情報を初期化するための関数
+# holes       : CompetitionService#get_*で取得したarray(JSON)
+# self_party  : 自分が所属するpartyのarray(JSON)
+# selfScore   : PlayerService#get_scoresで取得したarray(JSON)
+initialize_sug_competition_status = (holes, self_party, selfScore) ->
+  cstatus = {}
+  cstatus.holes = []
+  for h in holes
+    hole = {} 
+    hole.id = h.id
+    hole.hole_no = h.hole_no
+    hole.par = h.par
+    hole.yard = h.yard
+    
+    # set self score
+    hole.self_score = {}
+    score = window.find_array_by_id(selfScore, "golf_hole_id", h.id)
+    if score
+      hole.self_score.shot_num = score.shot_num
+      hole.self_score.pat_num = score.pat_num
+      hole.self_score.sent = true
+    
+    # set others score
+    other_scores = {}
+    for p in self_party.players
+      other_scores[p.user_id] = {} unless p.self
+    hole.other_scores = other_scores
+
+    cstatus.holes.push hole   
+  return cstatus
+
+
+
+# partyが複数格納されたArray(JSONオブジェクト)からselfフラグが立っているpartyを返す
+get_self_party = (parties) ->
+  for party in parties
+    return party if party.self
