@@ -32,9 +32,9 @@ $ ->
       partyinfo.set_players(self_party_json2.players)
 
       cstatus.loaded = true
-      window.stop_waiting()
+      #window.stop_waiting()
       storeCompetitionStatus(cstatus) 
-      storeParty(partyinfo.to_json()) 
+      partyinfo.save()
 
       data_loaded()
 
@@ -55,7 +55,7 @@ $ ->
   # 定期的にサーバとデータを同期する
   setInterval ->
     cstatus = getCompetitionStatus()
-    partyinfo = getParty()
+    partyinfo = SugParty.load()
     #### 定期的に自分のスコアのうち未送信データをサーバに送信する
     # holesを頭からシークし、sent=falseのものをサーバへ送信する
     for hole in cstatus.holes
@@ -80,7 +80,7 @@ $ ->
       data = convertHashToQuerystring({player_id: player_id})
       score = JSON.parse($.ajax( { type: "GET", url:  url, data: data, async: false }).responseText)
       #setScoreToSugParty(partyinfo, score)
-    storeParty(partyinfo) 
+    partyinfo.save()
   , 10000
 
   return 
@@ -90,7 +90,7 @@ $ ->
 initialize_page = ->
   # localStorageからsug_competition_statusを取得
   cstatus = getCompetitionStatus()
-  partyinfo = getParty()
+  partyinfo = SugParty.load()
   
   hash = convertQuerystringToHash(window.location.href)
   unless hash["competition_id"]

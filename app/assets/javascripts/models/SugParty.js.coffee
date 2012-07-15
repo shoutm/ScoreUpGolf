@@ -17,18 +17,27 @@ class SugParty
     for player_id, player of players
       if ! player.self
         @others.add_player2(player_id, player)
-  # localStorageに保存されたJSONオブジェクトからのロード
-  load_json: (json) ->
-    this.set_party_no(json.party_no)
-    @self = new Self(json.self.player_id, json.self.name)
-    @others = new Others()
-    this.set_players2(json.others)
   to_json: ->
     json = {}
     json["party_no"] = @party_no
     json["self"] = @self.to_json()
     json["others"] = @others.to_json()
     return json
+  # localStorageにセーブする
+  save: ->
+    localStorage.sug_party = JSON.stringify(this.to_json())
+  # localStorageに保存されたJSONオブジェクトからSugPartyオブジェクトを作成するクラスメソッド
+  # localStorageにデータが保存されていなかった場合nullを返し、SugPartyオブジェクトがloadできた場合、そのオブジェクトを返す
+  @load: ->
+    if(typeof(localStorage.sug_competition_status) == "undefined")
+      return false
+    json = JSON.parse(localStorage.sug_party)
+    party = new SugParty()
+    party.set_party_no(json.party_no)
+    party.self = new Self(json.self.player_id, json.self.name)
+    party.set_players2(json.others)
+    return party
+
 
 
   class Self
