@@ -14,14 +14,14 @@ $ ->
       #window.start_waiting("white")
 
       # localStorageのsug_competition_statusを作成する
-      url1 = "/service/competition_service/get_holes.json?competition_id=" + hash.competition_id
-      url2 = "/service/player_service/get_scores.json?competition_id=" + hash.competition_id
-      url3 = "/service/competition_service/get_parties.json?competition_id=" + hash.competition_id
+      url1 = "/service/competition_service/get_holes.json?competition_id=" + hash.competition_id    # コンペのホール情報取得用URL
+      url2 = "/service/player_service/get_scores.json?competition_id=" + hash.competition_id        # 自らのスコア取得用URL
+      url3 = "/service/competition_service/get_parties.json?competition_id=" + hash.competition_id  # コンペに属するpartyを全て返す(player情報は含まない)ためのURL
       holes_json = JSON.parse($.ajax({type: "GET", url: url1, dataType: "json", async: false }).responseText)
       selfScore_json = JSON.parse($.ajax({type: "GET", url: url2, dataType: "json", async: false }).responseText)
       parties_json = JSON.parse($.ajax({type: "GET", url: url3, dataType: "json", async: false }).responseText)
       self_party_json = get_self_party(parties_json)
-      url4 = "/service/party_service/get_party_with_user.json?party_id=" + self_party_json.id
+      url4 = "/service/party_service/get_party_with_user.json?party_id=" + self_party_json.id       # 指定したparty_idのparty情報(player情報含む)取得用URL
       self_party_json2 = JSON.parse($.ajax({type: "GET", url: url4, dataType: "json", async: false }).responseText)
       cstatus = new SugCompetitionStatus(hash.competition_id)
       cstatus.set_holes(holes_json, self_party_json2, selfScore_json)
@@ -43,7 +43,7 @@ $ ->
     cstatus = SugCompetitionStatus.load()
     hole_no = $("#hole_no").text()
     # holesを頭からシークし、hole_noの値が一致するホールを探し、スコアを保存する
-    for hole in cstatus.holes
+    for hole in cstatus.get_holes()
       if eval(hole_no) == eval(hole.hole_no)
         hole.set_self_score(eval($("#shot_num").text()), eval($("#pat_num").text()), false)
         cstatus.save()
@@ -56,9 +56,9 @@ $ ->
     partyinfo = SugParty.load()
     #### 定期的に自分のスコアのうち未送信データをサーバに送信する
     # holesを頭からシークし、sent=falseのものをサーバへ送信する
-    for hole in cstatus.holes
+    for hole in cstatus.get_holes()
       if hole.self_score && hole.self_score.sent == false
-        player_id = partyinfo.self.player_id
+        player_id = partyinfo.get_self_player_id()
         data = convertHashToQuerystring({player_id: player_id, golf_hole_id: hole.id, shot_num: hole.self_score.shot_num, pat_num: hole.self_score.pat_num})
         url = "/service/player_service/set_score"
         $.ajax(
@@ -73,12 +73,12 @@ $ ->
     cstatus.save()
 
     #### 定期的に自分のパーティの情報をサーバから取得する
-    for player_id in Object.keys(partyinfo.others)
+    for player_id in Object.keys(partyinfo.get_others()) # othersのplayer_idのみ必要なため左記の実装
       url = "/service/player_service/get_scores.json"
       data = convertHashToQuerystring({player_id: player_id})
       score = JSON.parse($.ajax( { type: "GET", url:  url, data: data, async: false }).responseText)
-      #setScoreToSugParty(partyinfo, score)
-    partyinfo.save()
+      cstatus.set_other_scores(player_id, score)
+    cstatus.save()
   , 10000
 
   return 
@@ -108,7 +108,7 @@ page_load = ->
   # holesを頭からシークし、self_scoreが空であるホールを探し、hole_noをセットする(これが次プレイするホール)
   cstatus = SugCompetitionStatus.load()
   next_hole_found = false
-  for hole in cstatus.holes
+  for hole in cstatus.get_holes()
     unless hole.self_score
       $("#hole_no").text(hole.hole_no)
       $("#shot_num").text(hole.par)

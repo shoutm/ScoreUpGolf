@@ -4,7 +4,9 @@ class Service::PlayerServiceController < ApplicationController
   # 引数のcompetition_idが指定されていた場合、引数のcompetition_idとログイン中のユーザ情報からplayerを特定し、所属するコンペにおけるスコアを取得する
   # 
   # == 引数
+  # 以下のどちらかの引数を指定
   # player_id
+  # competition_id
   # 
   # == 出力例
   #   [

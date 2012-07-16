@@ -5,6 +5,7 @@ class SugParty
     @self = null
     @others = new Others()
   set_party_no: (@party_no) ->
+
   # PartyServiceControllerのget_party_with_userの出力のplayers(json)が引数として渡される
   set_players: (players) ->
     for player in players
@@ -12,11 +13,20 @@ class SugParty
         @self = new Self(player.id, player.user.name)
       else
         @others.add_player(player)
+
   # localStorageからの復元の際に使われるメソッド
   set_players2: (players) -> 
     for player_id, player of players
       if ! player.self
         @others.add_player2(player_id, player)
+
+  get_self_player_id: ->
+    return @self.player_id
+
+  # othersを示すjsonを返却する
+  get_others: ->
+    return @others.others
+
   to_json: ->
     json = {}
     json["party_no"] = @party_no

@@ -9,6 +9,7 @@ class SugCompetitionStatus
   constructor: (@competition_id) ->
     @loaded = false
     @holes = []
+
   set_holes: (holes, self_party, self_score) ->
     # @holesの初期化
     for h in holes
@@ -19,8 +20,25 @@ class SugCompetitionStatus
         hole.set_self_score(score.shot_num, score.pat_num, true)
       # holeのother_scores属性の設定(空のスコア情報を作成)
       for p in self_party.players
-        hole.add_other_score(p.user_id, null) unless p.self
+        hole.set_other_score(p.id, null) unless p.self
       @holes.push(hole)
+
+  # == 概要
+  # 指定されたplayer_idのスコアを設定する
+  # == 引数
+  # player_id
+  # score     PlayerService#get_scoresで取得したarray(JSON)
+  set_other_scores: (player_id, scores) ->
+    for score_json in scores
+      for hole in @holes
+        if score_json.golf_hole_id == hole.id
+          score = new Score(score_json.shot_num, score_json.pat_num)
+          hole.set_other_score(player_id, score)
+
+  # holesを表現するarrayを返す
+  get_holes: ->
+    return @holes
+
   to_json: ->
     json = {}
     json["competition_id"] = @competition_id
@@ -30,8 +48,10 @@ class SugCompetitionStatus
       holes_json.push hole.to_json()
     json["holes"] = holes_json
     return json
+
   save: -> # localStorageにsaveする
     localStorage.sug_competition_status = JSON.stringify(this.to_json())
+
   # localStorageに保存されたJSONオブジェクトからSugPartyオブジェクトを作成するクラスメソッド
   # localStorageにデータが保存されていなかった場合nullを返し、SugPartyオブジェクトがloadできた場合、そのオブジェクトを返す
   @load: ->
@@ -48,9 +68,9 @@ class SugCompetitionStatus
       for player_id, score_json of hole_json.other_scores 
         if score_json && score_json.shot_num && score_json.pat_num
           score = new Score(score_json.shot_num, score_json.pat_num)
-          hole.add_other_score(player_id, score)
+          hole.set_other_score(player_id, score)
         else 
-          hole.add_other_score(player_id, null)
+          hole.set_other_score(player_id, null)
       cstatus.holes.push(hole)
       cstatus.loaded = true
     return cstatus
@@ -62,7 +82,7 @@ class SugCompetitionStatus
       @other_scores = {}
     set_self_score: (shot_num, pat_num, sent) -> 
       @self_score = new SelfScore(shot_num, pat_num, sent)
-    add_other_score: (player_id, score) ->        # scoreはScoreクラスのオブジェクト
+    set_other_score: (player_id, score) ->        # scoreはScoreクラスのオブジェクト
       @other_scores[player_id] = score
     to_json: ->
       json = {}
