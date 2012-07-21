@@ -11,7 +11,7 @@ $ ->
     # URL上のcompetition_idを取得する
     hash = convertQuerystringToHash(window.location.href)
     if hash["competition_id"] # containsKeyInHash("competition_id", hash)
-      #window.start_waiting("white")
+      window.start_waiting("white")
 
       # localStorageのsug_competition_statusを作成する
       url1 = "/service/competition_service/get_holes.json?competition_id=" + hash.competition_id    # コンペのホール情報取得用URL
@@ -32,7 +32,7 @@ $ ->
       partyinfo.set_players(self_party_json2.players)
 
       cstatus.loaded = true
-      #window.stop_waiting()
+      window.stop_waiting()
       cstatus.save()
       partyinfo.save()
 
