@@ -54,30 +54,12 @@ $ ->
   setInterval ->
     cstatus = SugCompetitionStatus.load()
     partyinfo = SugParty.load()
-    #### 定期的に自分のスコアのうち未送信データをサーバに送信する
-    # holesを頭からシークし、sent=falseのものをサーバへ送信する
-    for hole in cstatus.get_holes()
-      if hole.self_score && hole.self_score.sent == false
-        player_id = partyinfo.get_self_player_id()
-        data = convertHashToQuerystring({player_id: player_id, golf_hole_id: hole.id, shot_num: hole.self_score.shot_num, pat_num: hole.self_score.pat_num})
-        url = "/service/player_service/set_score"
-        $.ajax(
-          { 
-            type: "POST"
-            url:  url
-            data: data
-            async: false
-            success: ->
-              hole.self_score.sent = true
-          })
-    cstatus.save()
+    # 未送信のスコアをサーバに送信する
+    send_uncommited_score(cstatus, partyinfo)
 
-    #### 定期的に自分のパーティの情報をサーバから取得する
-    for player_id in Object.keys(partyinfo.get_others()) # othersのplayer_idのみ必要なため左記の実装
-      url = "/service/player_service/get_scores.json"
-      data = convertHashToQuerystring({player_id: player_id})
-      score = JSON.parse($.ajax( { type: "GET", url:  url, data: data, async: false }).responseText)
-      cstatus.set_other_scores(player_id, score)
+    # 定期的に自分のパーティメンバーのスコア情報をサーバから取得する
+    collect_others_scores(cstatus, partyinfo)
+
     cstatus.save()
   , 10000
 
@@ -114,8 +96,13 @@ page_load = ->
       $("#shot_num").text(hole.par)
       next_hole_found = true
       break
-  # スコアが全てセットされていた場合、waitページへ移動する
-  document.location = "/competition/wait" unless next_hole_found
+  # スコアが全てセットされていた場合、全てのスコアをサーバへ送信してwaitページへ移動する
+  unless next_hole_found
+    window.start_waiting("white")
+    partyinfo = SugParty.load()
+    send_uncommited_score(cstatus, partyinfo)
+    document.location = "/competition/wait" 
+    window.stop_waiting()
 
 
 
@@ -131,3 +118,41 @@ data_loaded = ->
 get_self_party = (parties) ->
   for party in parties
     return party if party.self
+
+
+
+# 引数に指定されたSugCompetitionStatusのスコアのうち未送信分をサーバに送信する
+# holesを頭からシークし、sent=falseのものをサーバへ送信する
+#
+# == 引数
+# cstatus      : SugCompetitionStatusのインスタンス
+# partayinfo   : SugPartyのインスタンス
+send_uncommited_score = (cstatus, partyinfo) ->
+  for hole in cstatus.get_holes()
+    if hole.self_score && hole.self_score.sent == false
+      player_id = partyinfo.get_self_player_id()
+      data = convertHashToQuerystring({player_id: player_id, golf_hole_id: hole.id, shot_num: hole.self_score.shot_num, pat_num: hole.self_score.pat_num})
+      url = "/service/player_service/set_score"
+      $.ajax(
+        { 
+          type: "POST"
+          url:  url
+          data: data
+          async: false
+          success: ->
+            hole.self_score.sent = true
+        })
+
+
+
+# 自分のパーティに所属する他メンバーのスコアを取得し、保存する
+#
+# == 引数
+# cstatus      : SugCompetitionStatusのインスタンス
+# partayinfo   : SugPartyのインスタンス
+collect_others_scores = (cstatus, partyinfo) ->
+  url = "/service/player_service/get_scores.json"
+  data = convertHashToQuerystring({player_id: player_id})
+  for player_id in Object.keys(partyinfo.get_others()) # othersのplayer_idのみ必要なため左記の実装
+    score = JSON.parse($.ajax( { type: "GET", url:  url, data: data, async: false }).responseText)
+    cstatus.set_other_scores(player_id, score)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120407141309) do
+ActiveRecord::Schema.define(:version => 20120722135219) do
 
   create_table "competitions", :force => true do |t|
     t.string   "name"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20120407141309) do
   end
 
   add_index "shot_results", ["golf_hole_id"], :name => "fk_shot_results__golf_hole_id"
-  add_index "shot_results", ["player_id"], :name => "fk_shot_results__player_id"
+  add_index "shot_results", ["player_id", "golf_hole_id"], :name => "index_shot_results_on_player_id_and_golf_hole_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "name"
