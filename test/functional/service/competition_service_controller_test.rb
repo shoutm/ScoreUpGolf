@@ -34,34 +34,14 @@ Rails.logger.debug "CompetitionServiceController/0002: holes.class = #{holes.cla
     assert ok_flag
   end
 
-  test "0003_getPlayersInJoinedParty" do
-    get :get_players_in_joined_party, {format: "json", competition_id: 1}
-    players = JSON.parse(@response.body)
-
-    ok_flag = true
-
-    for i in 0..3
-      if players[i]["id"] != (i+1) || players[i]["party_id"] != 1 || players[i]["user_id"] != (i+1)
-        ok_flag = false
+  test "0003_getParties" do
+    get :get_parties, {format: "json", competition_id: 1}
+    parties = JSON.parse(@response.body)
+    parties.each do |party|
+      if party["id"] == 1
+        assert party["self"]
       end
     end
-
-    assert ok_flag
   end
 
-  test "0004_getPlayersInJoinedParty" do
-    get :get_players_in_joined_party, {format: "json", competition_id: 1, without_myself: "true"}
-    players = JSON.parse(@response.body)
-
-    ok_flag = true
-
-# TODO ログインしているユーザ以外の情報が返ってくる
-#    for i in 0..3
-#      if players[i]["id"] != (i+1) || players[i]["party_id"] != 1 || players[i]["user_id"] != (i+1)
-#        ok_flag = false
-#      end
-#    end
-
-    assert ok_flag
-  end
 end

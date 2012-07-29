@@ -54,7 +54,20 @@ class Service::CompetitionServiceController < ApplicationController
   # リクエストを要求したユーザが属するpartyにはselfフラグを立てて返す
   # == 引数
   # competition_id
-  #
+  # == 出力例
+  #   [
+  #     {
+  #       "competition_id": 1, 
+  #       "created_at": "2012-07-24T14:40:11Z", 
+  #       "id": 1, 
+  #       "party_no": 1, 
+  #       "reverse_cource_order": false, 
+  #       "self": true, 
+  #       "updated_at":
+  #       "2012-07-24T14:40:11Z"
+  #     },
+  #     ..
+  #   ]
   def get_parties
     c = Competition.find(params[:competition_id])
     self_party = PartyUtils::get_joined_party(c.parties, @user)

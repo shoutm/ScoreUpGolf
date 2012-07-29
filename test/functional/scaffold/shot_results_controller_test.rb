@@ -18,6 +18,8 @@ class Scaffold::ShotResultsControllerTest < ActionController::TestCase
 
   test "should create shot_result" do
     assert_difference('ShotResult.count') do
+      # unique制約を入れたことにより、fixturesと重複しないエントリを入れる必要
+      @shot_result["golf_hole_id"] += 100002
       post :create, shot_result: @shot_result.attributes
     end
 
