@@ -28,10 +28,10 @@ window.find_array_by_id = (array, id, key) ->
 
 
 # 画面全体をグレーにして、waitingシンボルを画面中央に出力する
-window.start_waiting = (color) ->
+window.show_loading_icon = (color) ->
   # 画面全体を覆うグレーのタグを追加
-  $("body").prepend("<div id=\"gray_layer\" />")
-  $("#gray_layer").css({
+  $("body").prepend("<div id=\"loading_icon_layer\" />")
+  $("#loading_icon_layer").css({
     position: "fixed",
     top: "0",
     left: "0",
@@ -40,13 +40,13 @@ window.start_waiting = (color) ->
     background: "black", 
     opacity: "0.60",
     })
-  $("#gray_layer").activity({color: color})
+  $("#loading_icon_layer").activity({color: color})
 
 
 
 # waitingを終了する
-window.stop_waiting = ->
-  $("#gray_layer").hide()
-  $("#gray_layer").activity(false)
+window.hide_loading_icon = ->
+  $("#loading_icon_layer").hide()
+  $("#loading_icon_layer").activity(false)
 
 

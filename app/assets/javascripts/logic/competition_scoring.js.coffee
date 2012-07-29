@@ -11,8 +11,6 @@ $ ->
     # URL上のcompetition_idを取得する
     hash = convertQuerystringToHash(window.location.href)
     if hash["competition_id"] # containsKeyInHash("competition_id", hash)
-      window.start_waiting("white")
-
       # localStorageのsug_competition_statusを作成する
       url1 = "/service/competition_service/get_holes.json?competition_id=" + hash.competition_id    # コンペのホール情報取得用URL
       url2 = "/service/player_service/get_scores.json?competition_id=" + hash.competition_id        # 自らのスコア取得用URL
@@ -32,7 +30,6 @@ $ ->
       partyinfo.set_players(self_party_json2.players)
 
       cstatus.loaded = true
-      window.stop_waiting()
       cstatus.save()
       partyinfo.save()
 
@@ -98,11 +95,11 @@ page_load = ->
       break
   # スコアが全てセットされていた場合、全てのスコアをサーバへ送信してwaitページへ移動する
   unless next_hole_found
-    window.start_waiting("white")
+    window.show_loading_icon("white")
     partyinfo = SugParty.load()
     send_uncommited_score(cstatus, partyinfo)
     document.location = "/competition/wait" 
-    window.stop_waiting()
+    window.hide_loading_icon()
 
 
 
