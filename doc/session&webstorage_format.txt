@@ -20,8 +20,8 @@ localStorage.sug_competition_status:
           yard:    <num>
           self_score:           # ホールが終了する度にエントリを追加する。定期的にバックグラウンドでサーバに結果を送信する
             {
-              shot_num: <num>
-              pat_num: <num>
+              shot_num: <num> # ショット数(パット数含む)
+              pat_num: <num>  # パット数
               sent: <bool>    # サーバに送信済みかどうか
             }
           other_scores: 

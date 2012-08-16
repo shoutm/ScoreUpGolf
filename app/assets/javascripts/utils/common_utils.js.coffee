@@ -1,3 +1,16 @@
+# 引数に与えられたhashをソートする
+window.sort_hash = (hash) ->
+  ary = []
+  for key, value of hash 
+    ary.push key
+  ary.sort((a,b) -> a - b)
+  hash2 = {}
+  for key in ary
+    hash2[key] = hash[key]
+  hash2
+
+
+
 window.convertQuerystringToHash = (url) ->
   retval = {}
   hashes = url.slice(url.indexOf('?') + 1).split('&')

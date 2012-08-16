@@ -67,6 +67,8 @@ class SugParty
       @others[player_id] = other
     to_json: ->
       return @others
+    to_sorted_json: ->
+      return sort_hash(@others)
 
 
   class Other

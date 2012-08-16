@@ -41,8 +41,8 @@ $ ->
     hole_no = $("#hole_no").text()
     # holesを頭からシークし、hole_noの値が一致するホールを探し、スコアを保存する
     for hole in cstatus.get_holes()
-      if eval(hole_no) == eval(hole.hole_no)
-        hole.set_self_score(eval($("#shot_num").text()), eval($("#pat_num").text()), false)
+      if parseInt(hole_no) == parseInt(hole.hole_no)
+        hole.set_self_score(parseInt($("#shot_num").text()), parseInt($("#pat_num").text()), false)
         cstatus.save()
         break
     page_load()
@@ -139,17 +139,3 @@ send_uncommited_score = (cstatus, partyinfo) ->
           success: ->
             hole.self_score.sent = true
         })
-
-
-
-# 自分のパーティに所属する他メンバーのスコアを取得し、保存する
-#
-# == 引数
-# cstatus      : SugCompetitionStatusのインスタンス
-# partayinfo   : SugPartyのインスタンス
-collect_others_scores = (cstatus, partyinfo) ->
-  url = "/service/player_service/get_scores.json"
-  data = convertHashToQuerystring({player_id: player_id})
-  for player_id in Object.keys(partyinfo.get_others()) # othersのplayer_idのみ必要なため左記の実装
-    score = JSON.parse($.ajax( { type: "GET", url:  url, data: data, async: false }).responseText)
-    cstatus.set_other_scores(player_id, score)

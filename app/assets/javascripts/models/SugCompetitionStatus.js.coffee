@@ -80,6 +80,8 @@ class SugCompetitionStatus
   class Hole
     constructor: (@id, @hole_no, @par, @yard) ->
       @other_scores = {}
+    get_sorted_other_scores: ->
+      return sort_hash(@other_scores)
     set_self_score: (shot_num, pat_num, sent) -> 
       @self_score = new SelfScore(shot_num, pat_num, sent)
     set_other_score: (player_id, score) ->        # scoreはScoreクラスのオブジェクト

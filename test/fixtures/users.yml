@@ -35,6 +35,33 @@ user4:
   password: "password"
   role:     200
 
+user5:
+  id:       5
+  name:     "ユーザ5"
+  email:    "user5@test.com"
+  password: "password"
+  role:     200
+
+user6:
+  id:       6
+  name:     "ユーザ6"
+  email:    "user6@test.com"
+  password: "password"
+  role:     200
+
+user7:
+  id:       7
+  name:     "ユーザ7"
+  email:    "user7@test.com"
+  password: "password"
+  role:     200
+
+user8:
+  id:       8
+  name:     "ユーザ8"
+  email:    "user8@test.com"
+  password: "password"
+  role:     200
 
 
 
