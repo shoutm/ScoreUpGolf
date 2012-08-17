@@ -39,7 +39,8 @@
   }
 
   #scores {
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     background-color: white;
 
@@ -52,7 +53,7 @@
       border-right: 2px solid #ddd;
     }
 
-    .row_18 {
+    .sum {
       .col_hole_no, .col_par, .col_1, .col_2, .col_3, .col_4 {
         border-bottom: 2px solid #ddd;
       }
