@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   def login_check
     # TODO openid での認証
-    @user = User.find(:first, ["email = :email", {email: "user1@test.com"}])   
+    @user = User.find(:first, conditions: ["email = :email", {email: "user1@test.com"}])   
   end
 end

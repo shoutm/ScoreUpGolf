@@ -16,6 +16,17 @@ $ ->
     render_score(cstatus)
   , 10000
 
+  $("#finish").click ->
+    url = "/competition/finish"
+    # TODO success時, error時の遷移先の設定
+    $.ajax({
+      type: "GET", 
+      url: url, 
+      dataType: "html", 
+      async: false, 
+      success: ->
+        document.location = "http://www.google.com/"
+    })
 
 
 # 画面の初期描画
