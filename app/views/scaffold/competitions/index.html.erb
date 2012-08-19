@@ -8,6 +8,7 @@
     <th>Firsthalf cource</th>
     <th>Secondhalf cource</th>
     <th>Host user</th>
+    <th>State</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +22,7 @@
     <td><%= competition.firsthalf_cource_id %></td>
     <td><%= competition.secondhalf_cource_id %></td>
     <td><%= competition.host_user_id %></td>
+    <td><%= competition.state %></td>
     <td><%= link_to 'Show', scaffold_competition_path(competition) %></td>
     <td><%= link_to 'Edit', edit_scaffold_competition_path(competition) %></td>
     <td><%= link_to 'Destroy', scaffold_competition_path(competition), confirm: 'Are you sure?', method: :delete %></td>

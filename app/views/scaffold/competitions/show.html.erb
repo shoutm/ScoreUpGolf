@@ -30,6 +30,10 @@
   <%= @competition.host_user_id %>
 </p>
 
+<p>
+  <b>State</b>
+  <%= @competition.state %>
+</p>
 
 <%= link_to 'Edit', edit_scaffold_competition_path(@competition) %> |
 <%= link_to 'Back', scaffold_competitions_path %>
