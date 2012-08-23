@@ -6,35 +6,6 @@ $ ->
   # ページロード時の初期化
   initialize_page()
 
-  # ページロード時にlocalStorageが初期化されていなければロードボタンを押して初期化する
-  $("#load_data_button").click ->
-    # URL上のcompetition_idを取得する
-    hash = convertQuerystringToHash(window.location.href)
-    if hash["competition_id"] # containsKeyInHash("competition_id", hash)
-      # localStorageのsug_competition_statusを作成する
-      url1 = "/service/competition_service/get_holes.json?competition_id=" + hash.competition_id    # コンペのホール情報取得用URL
-      url2 = "/service/player_service/get_scores.json?competition_id=" + hash.competition_id        # 自らのスコア取得用URL
-      url3 = "/service/competition_service/get_parties.json?competition_id=" + hash.competition_id  # コンペに属するpartyを全て返す(player情報は含まない)ためのURL
-      holes_json = JSON.parse($.ajax({type: "GET", url: url1, dataType: "json", async: false }).responseText)
-      selfScore_json = JSON.parse($.ajax({type: "GET", url: url2, dataType: "json", async: false }).responseText)
-      parties_json = JSON.parse($.ajax({type: "GET", url: url3, dataType: "json", async: false }).responseText)
-      self_party_json = get_self_party(parties_json)
-      url4 = "/service/party_service/get_party_with_user.json?party_id=" + self_party_json.id       # 指定したparty_idのparty情報(player情報含む)取得用URL
-      self_party_json2 = JSON.parse($.ajax({type: "GET", url: url4, dataType: "json", async: false }).responseText)
-      cstatus = new SugCompetitionStatus(hash.competition_id)
-      cstatus.set_holes(holes_json, self_party_json2, selfScore_json)
-
-      # localStorageのsug_partyを作成する
-      partyinfo = new SugParty()
-      partyinfo.set_party_no(self_party_json2.party_no)
-      partyinfo.set_players(self_party_json2.players)
-
-      cstatus.loaded = true
-      cstatus.save()
-      partyinfo.save()
-
-      data_loaded()
-
   # submitボタンが押された際の動作
   $("#submit").click ->
     cstatus = SugCompetitionStatus.load()
@@ -71,14 +42,35 @@ initialize_page = ->
   
   hash = convertQuerystringToHash(window.location.href)
   unless hash["competition_id"]
-    # TODO competition_idを含まない場合、エラーを示す必要。以下は暫定対処
-    alert("competition_id is not provided.")
+    # TODO competition_idを含まない場合、エラーを示す必要。
     return
 
-  # localStorageにsug_competition_statusがロード済みであり、かつ現在のコンペと合致した情報であった場合は
-  # 正しい情報がロード済みであるとしてコンペ画面をロードする。
-  if cstatus && cstatus.loaded && cstatus.competition_id == hash.competition_id && partyinfo
-    data_loaded()
+  # localStorageにsug_competition_statusがロード済みでない、あるいは現在のコンペと
+  # 合致しない情報であった場合は正しい情報がロード済みでないとしてDBからデータを取得
+  # したのち、コンペ画面をロードする。
+  if !cstatus || !cstatus.loaded || cstatus.competition_id != hash.competition_id || partyinfo
+    # localStorageのsug_competition_statusを作成する
+    url1 = "/service/competition_service/get_holes.json?competition_id=" + hash.competition_id    # コンペのホール情報取得用URL
+    url2 = "/service/player_service/get_scores.json?competition_id=" + hash.competition_id        # 自らのスコア取得用URL
+    url3 = "/service/competition_service/get_parties.json?competition_id=" + hash.competition_id  # コンペに属するpartyを全て返す(player情報は含まない)ためのURL
+    holes_json = JSON.parse($.ajax({type: "GET", url: url1, dataType: "json", async: false }).responseText)
+    selfScore_json = JSON.parse($.ajax({type: "GET", url: url2, dataType: "json", async: false }).responseText)
+    parties_json = JSON.parse($.ajax({type: "GET", url: url3, dataType: "json", async: false }).responseText)
+    self_party_json = get_self_party(parties_json)
+    url4 = "/service/party_service/get_party_with_user.json?party_id=" + self_party_json.id       # 指定したparty_idのparty情報(player情報含む)取得用URL
+    self_party_json2 = JSON.parse($.ajax({type: "GET", url: url4, dataType: "json", async: false }).responseText)
+    cstatus = new SugCompetitionStatus(hash.competition_id)
+    cstatus.set_holes(holes_json, self_party_json2, selfScore_json)
+
+    # localStorageのsug_partyを作成する
+    partyinfo = new SugParty()
+    partyinfo.set_party_no(self_party_json2.party_no)
+    partyinfo.set_players(self_party_json2.players)
+
+    cstatus.loaded = true
+    cstatus.save()
+    partyinfo.save()
+  data_loaded()
 
 
 

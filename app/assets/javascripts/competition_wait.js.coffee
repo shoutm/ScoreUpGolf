@@ -18,14 +18,16 @@ $ ->
 
   $("#finish").click ->
     url = "/competition/finish"
-    # TODO success時, error時の遷移先の設定
+    # TODO error時の遷移先の設定
     $.ajax({
       type: "GET", 
       url: url, 
       dataType: "html", 
       async: false, 
       success: ->
-        document.location = "http://www.google.com/"
+        # localStorageの削除してからトップへ戻る
+        localStorage.clear()
+        document.location = "/"
     })
 
 
