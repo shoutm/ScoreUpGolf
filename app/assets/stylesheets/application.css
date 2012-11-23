@@ -10,7 +10,33 @@ html, body {
   margin:   0;
   padding:  0;
   height:   100%;
-  background-image: url("/assets/back.png");
+  background-image: url("/assets/dice.jpg");
   background-repeat: repeat;
+  box-sizing: border-box;
+}
+
+#contents {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+#logo {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#notice {
+  border: 1px dotted gray;
+  background-color: white;
+  /* border-radius: 8px; */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#notice a, #notice a:visited {
+  color: red;
+  font-weight: bold;
 }
 

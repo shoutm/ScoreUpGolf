@@ -1,4 +1,6 @@
 Scoreupgolf::Application.routes.draw do
+  root :to => 'portal/index#index'
+
   get 'competition/index'
   post 'competition/view'
   get 'competition/wait'

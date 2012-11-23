@@ -37,3 +37,4 @@ end
 
 gem 'mysql2'
 gem 'ruby-openid'
+gem 'therubyracer'

@@ -10,7 +10,12 @@
 </head>
 <body>
   <div class='<%= controller.controller_name %>'>
-    <%= yield %>
+  <div id="contents">
+    <div id="logo">
+      <%= image_tag "logo.gif" %>
+    </div>
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>
