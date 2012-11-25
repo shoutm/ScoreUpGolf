@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scoreupgolf</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "smartphone" %>
+  <%= javascript_include_tag "#{controller.controller_name}_#{controller.action_name}" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body>
+  <div class='<%= controller.controller_name %>'>
+  <div id="contents" data-role="page">
+    <div id="logo">
+      <%= image_tag "logo.gif" %>
+    </div>
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>
