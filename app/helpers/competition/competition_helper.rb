@@ -1,0 +1,2 @@
+module Competition::CompetitionHelper
+end
