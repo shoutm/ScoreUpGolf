@@ -1,0 +1,2 @@
+module Competition::PlayHelper
+end

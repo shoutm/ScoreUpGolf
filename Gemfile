@@ -40,3 +40,5 @@ end
 gem 'mysql2'
 gem 'ruby-openid'
 gem 'therubyracer'
+gem 'omniauth'
+gem 'omniauth-facebook'

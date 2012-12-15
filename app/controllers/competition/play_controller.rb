@@ -1,4 +1,4 @@
-class Competition::CompetitionController < ApplicationController
+class Competition::PlayController < ApplicationController
   def index
   end
 

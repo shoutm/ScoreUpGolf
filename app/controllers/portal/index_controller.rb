@@ -39,7 +39,7 @@ class Portal::IndexController < ApplicationController
 
     notice = Notice.new
     notice.msg = "プレイ中のコンペがあります"
-    notice.uri = "/competition/competition/index?competition_id=" + player.party.competition_id.to_s
+    notice.uri = "/competition/play/index?competition_id=" + player.party.competition_id.to_s
     return notice
   end
 end

@@ -1,9 +1,0 @@
-<% if @notices.length != 0 %>
-<section id="notice">
-  <% @notices.each do |notice| %>
-    <%= image_tag "golfball.gif", size: "15x15" %> <%= link_to notice.msg, notice.uri %>
-  <% end %>
-</section>
-<section id="competition">
-</section>
-<% end %>

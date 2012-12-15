@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Competition::CompetitionControllerTest < ActionController::TestCase
+class Competition::PlayControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
