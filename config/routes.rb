@@ -2,10 +2,10 @@ Scoreupgolf::Application.routes.draw do
   root :to => 'portal/index#index'
 
   namespace :competition do 
-    get 'competition/index'
-    post 'competition/view'
-    get 'competition/wait'
-    get 'competition/finish'
+    get 'play/index'
+    post 'play/view'
+    get 'play/wait'
+    get 'play/finish'
   end
 
   namespace :service do
