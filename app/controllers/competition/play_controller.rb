@@ -14,7 +14,7 @@ class Competition::PlayController < ApplicationController
   # のstateが終了、辞退、棄権であった場合、コンペ自体のstateを終了に変更
   # する。
   def finish
-    player = Player.find(:all, conditions: ["user_id = :user_id and state = :state", {user_id: @user.id, state: 20}])
+    player = Player.find(:all, conditions: ["user_id = :user_id and state = :state", {user_id: @user.id, state: Player::State::JOINED}])
 
     # エラー処理
     if player.size == 0 
@@ -30,7 +30,7 @@ class Competition::PlayController < ApplicationController
       return
     end
 
-    player[0].state = 30  # 終了ステータスへ変更
+    player[0].state = Player::State::FINISH  # 終了ステータスへ変更
     player[0].save
 
     # 参加コンペのstateを変更するかどうか
@@ -38,14 +38,14 @@ class Competition::PlayController < ApplicationController
     done = true
     competition.parties.each do |party|
       party.players.each do |player|
-        if player.state <= 20 
+        if player.state <= Player::State::JOINED
           done = false
         end
       end
     end
 
     if done
-      competition.state = 40
+      competition.state = Competition::State::FINISH
       competition.save
     end
   end

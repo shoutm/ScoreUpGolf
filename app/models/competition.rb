@@ -12,4 +12,13 @@ class Competition < ActiveRecord::Base
   validates :secondhalf_cource_id, presence: true
   validates :host_user_id, presence: true
   validates :state, presence: true
+
+  class State
+    WAITING     = 10
+    ARRANGED    = 20
+    PLAYING     = 30
+    FINISH      = 40
+    ABORTED     = 50
+    NOT_ARRANGED= 60
+  end
 end
