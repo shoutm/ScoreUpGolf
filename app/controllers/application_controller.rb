@@ -9,8 +9,13 @@ class ApplicationController < ActionController::Base
   end
 
   def login_check
-    # TODO openid での認証
-    @user = User.find(:first, conditions: ["email = :email", {email: "user1@test.com"}])   
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      redirect_to controller: "/session", action: :login
+    end
+  rescue Exception => ex
+    redirect_to controller: "/session", action: :login
   end
 
   private 

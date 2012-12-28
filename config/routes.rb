@@ -1,6 +1,10 @@
 Scoreupgolf::Application.routes.draw do
   root :to => 'portal/index#index'
 
+  get "session/login"
+  get "session/callback"
+  get "session/destroy"
+
   namespace :competition do 
     get 'play/index'
     post 'play/view'
@@ -29,6 +33,8 @@ Scoreupgolf::Application.routes.draw do
     resources :golf_fields
   end
 
+  # OmniAuth
+  match "/auth/:provider/callback" => "session#callback"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

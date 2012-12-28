@@ -17,7 +17,7 @@ $ ->
   , 10000
 
   $("#finish").click ->
-    url = "/competition/finish"
+    url = "/competition/play/finish"
     # TODO error時の遷移先の設定
     $.ajax({
       type: "GET", 

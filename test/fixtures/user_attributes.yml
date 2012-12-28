@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+user1_openid:
+  id: 101
+  key: "openid/facebook"
+  value: "1000000001"
+  user_id: 1
+
+user2_openid:
+  id: 102
+  key: "openid/facebook"
+  value: "1000000002"
+  user_id: 2
+
+user3_openid:
+  id: 103
+  key: "openid/facebook"
+  value: "1000000003"
+  user_id: 3
+
+user4_openid:
+  id: 104
+  key: "openid/facebook"
+  value: "1000000004"
+  user_id: 4
+
+user5_openid:
+  id: 105
+  key: "openid/facebook"
+  value: "1000000005"
+  user_id: 5
+
+user6_openid:
+  id: 106
+  key: "openid/facebook"
+  value: "1000000006"
+  user_id: 6
+
+user7_openid:
+  id: 107
+  key: "openid/facebook"
+  value: "1000000007"
+  user_id: 7
+
+user8_openid:
+  id: 108
+  key: "openid/facebook"
+  value: "1000000008"
+  user_id: 8
+
+user_morimoto_openid:
+  id: 200
+  key: "openid/facebook"
+  value: "1267864057"
+  user_id: 101

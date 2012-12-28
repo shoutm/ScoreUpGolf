@@ -1,22 +1,40 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-party1:
-  id:             1
+# Naming Rule: party<num1>-<num2>
+#   num1: competition_id
+#   num2: party_no
+party1_1:
+  id:             11
   party_no:       1
   competition_id: 1
   reverse_cource_order: false
 
-party2-1:
-  id:             2
+party2_1:
+  id:             21
   party_no:       1
   competition_id: 2
   reverse_cource_order: false
 
-party2-2:
-  id:             3
+party2_2:
+  id:             22
   party_no:       2
   competition_id: 2
   reverse_cource_order: false
+
+party2_3:
+  id:             23
+  party_no:       3
+  competition_id: 2
+  reverse_cource_order: false
+
+party3_1:
+  id:             31
+  party_no:       1
+  competition_id: 3
+  reverse_cource_order: false
+
+
+# Exception to a naming rule above
 
 one:
   id: 100001

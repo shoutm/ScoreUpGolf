@@ -45,15 +45,9 @@ class Service::PartyServiceController < ApplicationController
       }
     ))
 
-    party_json["players"].each do |player|
-      # リクエスト送信ユーザかどうかを判断し、selfフラグを立てる
-      if player["user_id"] == @user.id
-        player["self"] = true
-        break
-      end
-    end
-
-
+    p = party_json["players"].find do |player| player["user_id"] == @user.id end
+    p["self"] = true
+    
     respond_to do |format|
       format.json { render json: party_json} 
     end

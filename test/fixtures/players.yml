@@ -1,78 +1,95 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-player1:
+# Naming Rule: player<num1>_<num2>_<num3>
+# num1: competition_id
+# num2: party_no
+# num3: sequence number
+
+player1_1_1:
   id:       1
-  party_id: 1
+  party_id: 11
   user_id:  1
   state:   30
 
-player2:
+player1_1_2:
   id:       2
-  party_id: 1
+  party_id: 11
   user_id:  2
   state:   30
 
-player3:
+player1_1_3:
   id:       3
-  party_id: 1
+  party_id: 11
   user_id:  3
   state:   30
 
-player4:
+player1_1_4:
   id:       4
-  party_id: 1
+  party_id: 11
   user_id:  4
   state:   30
 
-player5:
+player2_1_1:
   id:       5
-  party_id: 2
+  party_id: 21
   user_id:  1
   state:   20
 
-player6:
+player2_1_2:
   id:       6
-  party_id: 2
+  party_id: 21
   user_id:  2
   state:   20
 
-player7:
+player2_1_3:
   id:       7
-  party_id: 2
+  party_id: 21
   user_id:  3
   state:   20
 
-player8:
+player2_1_4:
   id:       8
-  party_id: 2
+  party_id: 21
   user_id:  4
   state:   20
 
-player9:
+player2_2_1:
   id:       9
-  party_id: 3
+  party_id: 22
   user_id:  5
   state:   20
 
-player10:
+player2_2_2:
   id:       10
-  party_id: 3
+  party_id: 22
   user_id:  6
   state:   20
 
-player11:
+player2_2_3:
   id:       11
-  party_id: 3
+  party_id: 22
   user_id:  7
   state:   40
 
-player12:
+player2_2_4:
   id:       12
-  party_id: 3
+  party_id: 22
   user_id:  8
   state:   50
 
+player3_1_1:
+  id:       13
+  party_id: 31
+  user_id:  9
+  state:   20
 
+
+
+player_morimoto:
+  id:       100
+  party_id: 23
+  user_id:  100
+  state:   50
 
 one:
   id: 100001

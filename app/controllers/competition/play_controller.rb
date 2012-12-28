@@ -17,7 +17,7 @@ class Competition::PlayController < ApplicationController
     player = Player.find(:all, conditions: ["user_id = :user_id and state = :state", {user_id: @user.id, state: 20}])
 
     # エラー処理
-    if player == nil 
+    if player.size == 0 
       error_text = "The playing player doesn't exist."
     elsif player.size != 1 
       error_text = "Unknown error has occured."

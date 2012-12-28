@@ -1,127 +1,132 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-hole1_1:
-  id:             101
-  golf_cource_id: 1
+# Naming Rule: hole<num1>_<num2>_<num3>
+# num1: golf_field_id
+# num2: golf_cource's sequence_number
+# num3: sequence number
+
+hole1_1_1:
+  id:             1101
+  golf_cource_id: 11
   hole_no:        1
   par:            5
   yard:           360
 
-hole1_2:
-  id:             102
-  golf_cource_id: 1
+hole1_1_2:
+  id:             1102
+  golf_cource_id: 11
   hole_no:        2
   par:            5
   yard:           360
 
-hole1_3:
-  id:             103
-  golf_cource_id: 1
+hole1_1_3:
+  id:             1103
+  golf_cource_id: 11
   hole_no:        3
   par:            5
   yard:           360
 
-hole1_4:
-  id:             104
-  golf_cource_id: 1
+hole1_1_4:
+  id:             1104
+  golf_cource_id: 11
   hole_no:        4
   par:            5
   yard:           360
 
-hole1_5:
-  id:             105
-  golf_cource_id: 1
+hole1_1_5:
+  id:             1105
+  golf_cource_id: 11
   hole_no:        5
   par:            5
   yard:           360
 
-hole1_6:
-  id:             106
-  golf_cource_id: 1
+hole1_1_6:
+  id:             1106
+  golf_cource_id: 11
   hole_no:        6
   par:            5
   yard:           360
 
-hole1_7:
-  id:             107
-  golf_cource_id: 1
+hole1_1_7:
+  id:             1107
+  golf_cource_id: 11
   hole_no:        7
   par:            5
   yard:           360
 
-hole1_8:
-  id:             108
-  golf_cource_id: 1
+hole1_1_8:
+  id:             1108
+  golf_cource_id: 11
   hole_no:        8
   par:            5
   yard:           360
 
-hole1_9:
-  id:             109
-  golf_cource_id: 1
+hole1_1_9:
+  id:             1109
+  golf_cource_id: 11
   hole_no:        9
   par:            5
   yard:           360
 
-hole2_10:
-  id:             210
-  golf_cource_id: 2
+hole1_2_10:
+  id:             1210
+  golf_cource_id: 12
   hole_no:        10
   par:            5
   yard:           360
 
-hole2_11:
-  id:             211
-  golf_cource_id: 2
+hole1_2_11:
+  id:             1211
+  golf_cource_id: 12
   hole_no:        11
   par:            5
   yard:           360
 
-hole2_12:
-  id:             212
-  golf_cource_id: 2
+hole1_2_12:
+  id:             1212
+  golf_cource_id: 12
   hole_no:        12
   par:            5
   yard:           360
 
-hole2_13:
-  id:             213
-  golf_cource_id: 2
+hole1_2_13:
+  id:             1213
+  golf_cource_id: 12
   hole_no:        13
   par:            5
   yard:           360
 
-hole2_14:
-  id:             214
-  golf_cource_id: 2
+hole1_2_14:
+  id:             1214
+  golf_cource_id: 12
   hole_no:        14
   par:            5
   yard:           360
 
-hole2_15:
-  id:             215
-  golf_cource_id: 2
+hole1_2_15:
+  id:             1215
+  golf_cource_id: 12
   hole_no:        15
   par:            5
   yard:           360
 
-hole2_16:
-  id:             216
-  golf_cource_id: 2
+hole1_2_16:
+  id:             1216
+  golf_cource_id: 12
   hole_no:        16
   par:            5
   yard:           360
 
-hole2_17:
-  id:             217
-  golf_cource_id: 2
+hole1_2_17:
+  id:             1217
+  golf_cource_id: 12
   hole_no:        17
   par:            5
   yard:           360
 
-hole2_18:
-  id:             218
-  golf_cource_id: 2
+hole1_2_18:
+  id:             1218
+  golf_cource_id: 12
   hole_no:        18
   par:            5
   yard:           360

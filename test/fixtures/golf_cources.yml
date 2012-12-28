@@ -1,17 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-cource1:
-  id:             1
+# Naming Rule: cource<num1>_<num2>
+# num1: golf_field_id
+# num2: sequence number
+
+cource1_1:
+  id:             11
   name:           "コース1-1"
   golf_field_id:  1
 
-cource2:
-  id:             2
+cource1_2:
+  id:             12
   name:           "コース1-2"
   golf_field_id:  1
 
-cource3:
-  id:             3
+cource2_1:
+  id:             21
   name:           "コース2-1"
   golf_field_id:  2
 

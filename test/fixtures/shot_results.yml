@@ -1,508 +1,636 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-# sr + <user_id> + <hole_no>
+# Naming Rule: sr<num1>_<num2>
+# num1: player_id
+# num2: hole_no
 
 sr1_1:
   id:           101
   player_id:    1
-  golf_hole_id: 101
+  golf_hole_id: 1101
   shot_num:     3
   pat_num:      2
 
 sr1_2:
   id:           102
   player_id:    1
-  golf_hole_id: 102
+  golf_hole_id: 1102
   shot_num:     3
   pat_num:      2
 
 sr1_3:
   id:           103
   player_id:    1
-  golf_hole_id: 103
+  golf_hole_id: 1103
   shot_num:     3
   pat_num:      2
 
 sr1_4:
   id:           104
   player_id:    1
-  golf_hole_id: 104
+  golf_hole_id: 1104
   shot_num:     3
   pat_num:      2
 
 sr1_5:
   id:           105
   player_id:    1
-  golf_hole_id: 105
+  golf_hole_id: 1105
   shot_num:     3
   pat_num:      2
 
 sr1_6:
   id:           106
   player_id:    1
-  golf_hole_id: 106
+  golf_hole_id: 1106
   shot_num:     3
   pat_num:      2
 
 sr1_7:
   id:           107
   player_id:    1
-  golf_hole_id: 107
+  golf_hole_id: 1107
   shot_num:     3
   pat_num:      2
 
 sr1_8:
   id:           108
   player_id:    1
-  golf_hole_id: 108
+  golf_hole_id: 1108
   shot_num:     3
   pat_num:      2
 
 sr1_9:
   id:           109
   player_id:    1
-  golf_hole_id: 109
+  golf_hole_id: 1109
   shot_num:     3
   pat_num:      2
 
 sr1_10:
   id:           110
   player_id:    1
-  golf_hole_id: 210
+  golf_hole_id: 1210
   shot_num:     3
   pat_num:      2
 
 sr1_11:
   id:           111
   player_id:    1
-  golf_hole_id: 211
+  golf_hole_id: 1211
   shot_num:     3
   pat_num:      2
 
 sr1_12:
   id:           112
   player_id:    1
-  golf_hole_id: 212
+  golf_hole_id: 1212
   shot_num:     3
   pat_num:      2
 
 sr1_13:
   id:           113
   player_id:    1
-  golf_hole_id: 213
+  golf_hole_id: 1213
   shot_num:     3
   pat_num:      2
 
 sr1_14:
   id:           114
   player_id:    1
-  golf_hole_id: 214
+  golf_hole_id: 1214
   shot_num:     3
   pat_num:      2
 
 sr1_15:
   id:           115
   player_id:    1
-  golf_hole_id: 215
+  golf_hole_id: 1215
   shot_num:     3
   pat_num:      2
 
 sr1_16:
   id:           116
   player_id:    1
-  golf_hole_id: 216
+  golf_hole_id: 1216
   shot_num:     3
   pat_num:      2
 
 sr1_17:
   id:           117
   player_id:    1
-  golf_hole_id: 217
+  golf_hole_id: 1217
   shot_num:     3
   pat_num:      2
 
 sr1_18:
   id:           118
   player_id:    1
-  golf_hole_id: 218
+  golf_hole_id: 1218
   shot_num:     3
   pat_num:      2
 
 sr2_1:
   id:           201
   player_id:    2
-  golf_hole_id: 101
+  golf_hole_id: 1101
   shot_num:     3
   pat_num:      2
 
 sr2_2:
   id:           202
   player_id:    2
-  golf_hole_id: 102
+  golf_hole_id: 1102
   shot_num:     3
   pat_num:      2
 
 sr2_3:
   id:           203
   player_id:    2
-  golf_hole_id: 103
+  golf_hole_id: 1103
   shot_num:     3
   pat_num:      2
 
 sr2_4:
   id:           204
   player_id:    2
-  golf_hole_id: 104
+  golf_hole_id: 1104
   shot_num:     3
   pat_num:      2
 
 sr2_5:
   id:           205
   player_id:    2
-  golf_hole_id: 105
+  golf_hole_id: 1105
   shot_num:     3
   pat_num:      2
 
 sr2_6:
   id:           206
   player_id:    2
-  golf_hole_id: 106
+  golf_hole_id: 1106
   shot_num:     3
   pat_num:      2
 
 sr2_7:
   id:           207
   player_id:    2
-  golf_hole_id: 107
+  golf_hole_id: 1107
   shot_num:     3
   pat_num:      2
 
 sr2_8:
   id:           208
   player_id:    2
-  golf_hole_id: 108
+  golf_hole_id: 1108
   shot_num:     3
   pat_num:      2
 
 sr2_9:
   id:           209
   player_id:    2
-  golf_hole_id: 109
+  golf_hole_id: 1109
   shot_num:     3
   pat_num:      2
 
 sr2_10:
   id:           210
   player_id:    2
-  golf_hole_id: 210
+  golf_hole_id: 1210
   shot_num:     3
   pat_num:      2
 
 sr2_11:
   id:           211
   player_id:    2
-  golf_hole_id: 211
+  golf_hole_id: 1211
   shot_num:     3
   pat_num:      2
 
 sr2_12:
   id:           212
   player_id:    2
-  golf_hole_id: 212
+  golf_hole_id: 1212
   shot_num:     3
   pat_num:      2
 
 sr2_13:
   id:           213
   player_id:    2
-  golf_hole_id: 213
+  golf_hole_id: 1213
   shot_num:     3
   pat_num:      2
 
 sr2_14:
   id:           214
   player_id:    2
-  golf_hole_id: 214
+  golf_hole_id: 1214
   shot_num:     3
   pat_num:      2
 
 sr2_15:
   id:           215
   player_id:    2
-  golf_hole_id: 215
+  golf_hole_id: 1215
   shot_num:     3
   pat_num:      2
 
 sr2_16:
   id:           216
   player_id:    2
-  golf_hole_id: 216
+  golf_hole_id: 1216
   shot_num:     3
   pat_num:      2
 
 sr2_17:
   id:           217
   player_id:    2
-  golf_hole_id: 217
+  golf_hole_id: 1217
   shot_num:     3
   pat_num:      2
 
 sr2_18:
   id:           218
   player_id:    2
-  golf_hole_id: 218
+  golf_hole_id: 1218
   shot_num:     3
   pat_num:      2
 
 sr3_1:
   id:           301
   player_id:    3
-  golf_hole_id: 101
+  golf_hole_id: 1101
   shot_num:     3
   pat_num:      2
 
 sr3_2:
   id:           302
   player_id:    3
-  golf_hole_id: 102
+  golf_hole_id: 1102
   shot_num:     3
   pat_num:      2
 
 sr3_3:
   id:           303
   player_id:    3
-  golf_hole_id: 103
+  golf_hole_id: 1103
   shot_num:     3
   pat_num:      2
 
 sr3_4:
   id:           304
   player_id:    3
-  golf_hole_id: 104
+  golf_hole_id: 1104
   shot_num:     3
   pat_num:      2
 
 sr3_5:
   id:           305
   player_id:    3
-  golf_hole_id: 105
+  golf_hole_id: 1105
   shot_num:     3
   pat_num:      2
 
 sr3_6:
   id:           306
   player_id:    3
-  golf_hole_id: 106
+  golf_hole_id: 1106
   shot_num:     3
   pat_num:      2
 
 sr3_7:
   id:           307
   player_id:    3
-  golf_hole_id: 107
+  golf_hole_id: 1107
   shot_num:     3
   pat_num:      2
 
 sr3_8:
   id:           308
   player_id:    3
-  golf_hole_id: 108
+  golf_hole_id: 1108
   shot_num:     3
   pat_num:      2
 
 sr3_9:
   id:           309
   player_id:    3
-  golf_hole_id: 109
+  golf_hole_id: 1109
   shot_num:     3
   pat_num:      2
 
 sr3_10:
   id:           310
   player_id:    3
-  golf_hole_id: 210
+  golf_hole_id: 1210
   shot_num:     3
   pat_num:      2
 
 sr3_11:
   id:           311
   player_id:    3
-  golf_hole_id: 211
+  golf_hole_id: 1211
   shot_num:     3
   pat_num:      2
 
 sr3_12:
   id:           312
   player_id:    3
-  golf_hole_id: 212
+  golf_hole_id: 1212
   shot_num:     3
   pat_num:      2
 
 sr3_13:
   id:           313
   player_id:    3
-  golf_hole_id: 213
+  golf_hole_id: 1213
   shot_num:     3
   pat_num:      2
 
 sr3_14:
   id:           314
   player_id:    3
-  golf_hole_id: 214
+  golf_hole_id: 1214
   shot_num:     3
   pat_num:      2
 
 sr3_15:
   id:           315
   player_id:    3
-  golf_hole_id: 215
+  golf_hole_id: 1215
   shot_num:     3
   pat_num:      2
 
 sr3_16:
   id:           316
   player_id:    3
-  golf_hole_id: 216
+  golf_hole_id: 1216
   shot_num:     3
   pat_num:      2
 
 sr3_17:
   id:           317
   player_id:    3
-  golf_hole_id: 217
+  golf_hole_id: 1217
   shot_num:     3
   pat_num:      2
 
 sr3_18:
   id:           318
   player_id:    3
-  golf_hole_id: 218
+  golf_hole_id: 1218
   shot_num:     3
   pat_num:      2
 
 sr4_1:
   id:           401
   player_id:    4
-  golf_hole_id: 101
+  golf_hole_id: 1101
   shot_num:     3
   pat_num:      2
 
 sr4_2:
   id:           402
   player_id:    4
-  golf_hole_id: 102
+  golf_hole_id: 1102
   shot_num:     3
   pat_num:      2
 
 sr4_3:
   id:           403
   player_id:    4
-  golf_hole_id: 103
+  golf_hole_id: 1103
   shot_num:     3
   pat_num:      2
 
 sr4_4:
   id:           404
   player_id:    4
-  golf_hole_id: 104
+  golf_hole_id: 1104
   shot_num:     3
   pat_num:      2
 
 sr4_5:
   id:           405
   player_id:    4
-  golf_hole_id: 105
+  golf_hole_id: 1105
   shot_num:     3
   pat_num:      2
 
 sr4_6:
   id:           406
   player_id:    4
-  golf_hole_id: 106
+  golf_hole_id: 1106
   shot_num:     3
   pat_num:      2
 
 sr4_7:
   id:           407
   player_id:    4
-  golf_hole_id: 107
+  golf_hole_id: 1107
   shot_num:     3
   pat_num:      2
 
 sr4_8:
   id:           408
   player_id:    4
-  golf_hole_id: 108
+  golf_hole_id: 1108
   shot_num:     3
   pat_num:      2
 
 sr4_9:
   id:           409
   player_id:    4
-  golf_hole_id: 109
+  golf_hole_id: 1109
   shot_num:     3
   pat_num:      2
 
 sr4_10:
   id:           410
   player_id:    4
-  golf_hole_id: 210
+  golf_hole_id: 1210
   shot_num:     3
   pat_num:      2
 
 sr4_11:
   id:           411
   player_id:    4
-  golf_hole_id: 211
+  golf_hole_id: 1211
   shot_num:     3
   pat_num:      2
 
 sr4_12:
   id:           412
   player_id:    4
-  golf_hole_id: 212
+  golf_hole_id: 1212
   shot_num:     3
   pat_num:      2
 
 sr4_13:
   id:           413
   player_id:    4
-  golf_hole_id: 213
+  golf_hole_id: 1213
   shot_num:     3
   pat_num:      2
 
 sr4_14:
   id:           414
   player_id:    4
-  golf_hole_id: 214
+  golf_hole_id: 1214
   shot_num:     3
   pat_num:      2
 
 sr4_15:
   id:           415
   player_id:    4
-  golf_hole_id: 215
+  golf_hole_id: 1215
   shot_num:     3
   pat_num:      2
 
 sr4_16:
   id:           416
   player_id:    4
-  golf_hole_id: 216
+  golf_hole_id: 1216
   shot_num:     3
   pat_num:      2
 
 sr4_17:
   id:           417
   player_id:    4
-  golf_hole_id: 217
+  golf_hole_id: 1217
   shot_num:     3
   pat_num:      2
 
 sr4_18:
   id:           418
   player_id:    4
-  golf_hole_id: 218
+  golf_hole_id: 1218
+  shot_num:     3
+  pat_num:      2
+
+sr5_1:
+  id:           501
+  player_id:    5
+  golf_hole_id: 1101
+  shot_num:     3
+  pat_num:      2
+
+sr5_2:
+  id:           502
+  player_id:    5
+  golf_hole_id: 1102
+  shot_num:     3
+  pat_num:      2
+
+sr5_3:
+  id:           503
+  player_id:    5
+  golf_hole_id: 1103
+  shot_num:     3
+  pat_num:      2
+
+sr5_4:
+  id:           504
+  player_id:    5
+  golf_hole_id: 1104
+  shot_num:     3
+  pat_num:      2
+
+sr5_5:
+  id:           505
+  player_id:    5
+  golf_hole_id: 1105
+  shot_num:     3
+  pat_num:      2
+
+sr5_6:
+  id:           506
+  player_id:    5
+  golf_hole_id: 1106
+  shot_num:     3
+  pat_num:      2
+
+sr5_7:
+  id:           507
+  player_id:    5
+  golf_hole_id: 1107
+  shot_num:     3
+  pat_num:      2
+
+sr5_8:
+  id:           508
+  player_id:    5
+  golf_hole_id: 1108
+  shot_num:     3
+  pat_num:      2
+
+sr5_9:
+  id:           509
+  player_id:    5
+  golf_hole_id: 1109
+  shot_num:     3
+  pat_num:      2
+
+sr5_10:
+  id:           510
+  player_id:    5
+  golf_hole_id: 1210
+  shot_num:     3
+  pat_num:      2
+
+sr5_11:
+  id:           511
+  player_id:    5
+  golf_hole_id: 1211
+  shot_num:     3
+  pat_num:      2
+
+sr5_12:
+  id:           512
+  player_id:    5
+  golf_hole_id: 1212
+  shot_num:     3
+  pat_num:      2
+
+sr5_13:
+  id:           513
+  player_id:    5
+  golf_hole_id: 1213
+  shot_num:     3
+  pat_num:      2
+
+sr5_14:
+  id:           514
+  player_id:    5
+  golf_hole_id: 1214
+  shot_num:     3
+  pat_num:      2
+
+sr5_15:
+  id:           515
+  player_id:    5
+  golf_hole_id: 1215
+  shot_num:     3
+  pat_num:      2
+
+sr5_16:
+  id:           516
+  player_id:    5
+  golf_hole_id: 1216
+  shot_num:     3
+  pat_num:      2
+
+sr5_17:
+  id:           517
+  player_id:    5
+  golf_hole_id: 1217
+  shot_num:     3
+  pat_num:      2
+
+sr5_18:
+  id:           518
+  player_id:    5
+  golf_hole_id: 1218
   shot_num:     3
   pat_num:      2
 

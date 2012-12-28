@@ -1,12 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-admin:
-  id:       100
-  name:     "管理者1"
-  email:    "admin@test.com"
-  password: "password"
-  role:     100
-
 user1:
   id:       1
   name:     "ユーザ1"
@@ -63,14 +56,34 @@ user8:
   password: "password"
   role:     200
 
+user9:
+  id:       9
+  name:     "ユーザ9"
+  email:    "user9@test.com"
+  password: "password"
+  role:     200
 
+admin:
+  id:       100
+  name:     "管理者1"
+  email:    "admin@test.com"
+  password: "password"
+  role:     100
+
+
+morimoto:
+  id:       101
+  name:     "morimoto"
+  email:    "shouta.morimoto@gmail.com"
+  password: "password"
+  role:     200
+  
 
 
 
 one:
   id: 100001
   name: MyString
-  openid: MyString
   email: MyString
   password: MyString
   role: 200
@@ -78,7 +91,13 @@ one:
 two:
   id: 100002
   name: MyString
-  openid: MyString
+  email: MyString
+  password: MyString
+  role: 200
+
+three:
+  id: 100003
+  name: MyString
   email: MyString
   password: MyString
   role: 200

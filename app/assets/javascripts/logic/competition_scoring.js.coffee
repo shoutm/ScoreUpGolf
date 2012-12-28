@@ -90,7 +90,7 @@ page_load = ->
     window.show_loading_icon("white")
     partyinfo = SugParty.load()
     send_uncommited_score(cstatus, partyinfo)
-    document.location = "/competition/wait" 
+    document.location = "/competition/play/wait" 
     window.hide_loading_icon()
 
 

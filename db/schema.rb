@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817014229) do
+ActiveRecord::Schema.define(:version => 20121216082752) do
 
   create_table "competitions", :force => true do |t|
     t.string   "name"
@@ -105,9 +105,19 @@ ActiveRecord::Schema.define(:version => 20120817014229) do
   add_index "shot_results", ["golf_hole_id"], :name => "fk_shot_results__golf_hole_id"
   add_index "shot_results", ["player_id", "golf_hole_id"], :name => "index_shot_results_on_player_id_and_golf_hole_id", :unique => true
 
+  create_table "user_attributes", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_attributes", ["user_id", "key"], :name => "index_user_attributes_on_user_id_and_key", :unique => true
+  add_index "user_attributes", ["user_id"], :name => "index_user_attributes_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.string   "openid"
     t.string   "email"
     t.string   "password"
     t.integer  "role"

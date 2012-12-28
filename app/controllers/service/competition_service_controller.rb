@@ -19,27 +19,19 @@ class Service::CompetitionServiceController < ApplicationController
   #     ...
   #   ]
   def get_holes
-    # 該当competitionにuserが参加しているか
-    # TODO
-
     # CompetitionとUserからUserが所属するPartyを取得
     c = Competition.find(params[:competition_id])
     party = PartyUtils::get_joined_party(c.parties, @user)
+    
+    # 該当competitionにuserが参加していない場合
+    if party == nil then render json: nil ;return end
 
     # プレイするGolfHoleを取得
-    first = c.firsthalf_cource.golf_holes.sort do |a,b|
-      a.hole_no <=> b.hole_no
-    end
-    second = c.secondhalf_cource.golf_holes.sort do |a,b|
-      a.hole_no <=> b.hole_no
-    end
+    first = c.firsthalf_cource.golf_holes.sort do |a,b| a.hole_no <=> b.hole_no end
+    second = c.secondhalf_cource.golf_holes.sort do |a,b| a.hole_no <=> b.hole_no end
 
     holes = []
-    if party.reverse_cource_order
-      holes = second + first
-    else
-      holes = first + second
-    end
+    party.reverse_cource_order ? holes = second + first : holes = first + second
 
     respond_to do |format|
       format.json { render json: holes } 
@@ -71,13 +63,13 @@ class Service::CompetitionServiceController < ApplicationController
   def get_parties
     c = Competition.find(params[:competition_id])
     self_party = PartyUtils::get_joined_party(c.parties, @user)
+
+    # 該当competitionにuserが参加していない場合
+    if self_party == nil then render json: nil ;return end
+
     party_json = JSON.parse(c.parties.to_json)
-    party_json.each do |party|
-      if party["id"] == self_party.id
-        party["self"] = true
-        break
-      end
-    end
+    self_party_json = party_json.find do |party| party["id"] == self_party.id end
+    self_party_json["self"] = true
     
     respond_to do |format|
       format.json { render json: party_json } 

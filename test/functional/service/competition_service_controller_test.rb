@@ -1,47 +1,57 @@
 require 'test_helper'
 
 class Service::CompetitionServiceControllerTest < ActionController::TestCase
-  test "0001_getHoles" do
+  test "should not get holes when a user does not join an offered competition" do
     # ユーザが指定コンペに参加していなかった場合
-    get :get_holes, {format: "json", competition_id: 1}
-    # TODO
+    get :get_holes, {format: "json", competition_id: 1}, {user_id: 5}
+    assert_equal @response.body, "null"
   end
 
-  test "0002_getHoles" do
+  test "should not get holes when a competition is not found on db" do
+    get :get_holes, {format: "json", competition_id: 12453}, {user_id: 5}
+    assert_equal @response.body, "null"
+  end
+
+  test "should get holes" do
     # 適切なホール情報が入っているか？
-    get :get_holes, {format: "json", competition_id: 1}
+    get :get_holes, {format: "json", competition_id: 1}, {user_id: 1}
     holes = JSON.parse(@response.body)
-Rails.logger.debug "CompetitionServiceController/0002: holes = #{holes}"
-Rails.logger.debug "CompetitionServiceController/0002: holes.class = #{holes.class}"
 
-    ok_flag = true
-
-    for i in 0..8
-      Rails.logger.debug "CompetitionServiceController/0002: holes[#{i}] = #{holes[i]}"
-      if holes[i]["id"] != (100+i+1) ||  holes[i]["hole_no"] != (i+1) || holes[i]["par"] == nil || holes[i]["yard"] == nil
-        Rails.logger.debug "CompetitionServiceController/0002: ok_flag = false"
-        ok_flag = false
+    flag = true
+    0.upto(8) do |i|
+      if holes[i]["id"] != (1100 + i + 1) ||  holes[i]["hole_no"] != (i + 1) || holes[i]["par"] == nil || holes[i]["yard"] == nil
+        flag = false
       end
     end
-    for i in 9..17
-      Rails.logger.debug "CompetitionServiceController/0002: holes[#{i}] = #{holes[i]}"
-      if holes[i]["id"] != (200+i+1) ||  holes[i]["hole_no"] != (i+1) || holes[i]["par"] == nil || holes[i]["yard"] == nil
-        Rails.logger.debug "CompetitionServiceController/0002: ok_flag = false"
-        ok_flag = false
+    9.upto(17) do |i|
+      if holes[i]["id"] != (1200 + i + 1) ||  holes[i]["hole_no"] != (i + 1) || holes[i]["par"] == nil || holes[i]["yard"] == nil
+        flag = false
       end
     end
 
-    assert ok_flag
+    assert flag
   end
 
-  test "0003_getParties" do
-    get :get_parties, {format: "json", competition_id: 1}
+  test "should get parties" do
+    get :get_parties, {format: "json", competition_id: 1}, {user_id: 1}
     parties = JSON.parse(@response.body)
+    flag = false
     parties.each do |party|
-      if party["id"] == 1
-        assert party["self"]
+      if party["id"] == 11 && party["self"]
+        flag = true
       end
     end
+
+    assert flag
   end
 
+  test "should not get parties when a user does not join an offered competition" do
+    get :get_parties, {format: "json", competition_id: 1}, {user_id: 5}
+    assert_equal @response.body, "null"
+  end
+
+  test "should not get parties when a competition is not found on db" do
+    get :get_parties, {format: "json", competition_id: 12453}, {user_id: 5}
+    assert_equal @response.body, "null"
+  end
 end
