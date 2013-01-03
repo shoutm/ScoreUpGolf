@@ -36,6 +36,12 @@ party3_1:
 
 # Exception to a naming rule above
 
+party_morimoto:
+  id:             101
+  party_no:       1
+  competition_id: 101
+  reverse_cource_order: false
+
 one:
   id: 100001
   party_no: 1

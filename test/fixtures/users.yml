@@ -83,14 +83,14 @@ morimoto:
 
 one:
   id: 100001
-  name: MyString
+  name: User1
   email: MyString
   password: MyString
   role: 200
 
 two:
   id: 100002
-  name: MyString
+  name: User2
   email: MyString
   password: MyString
   role: 200

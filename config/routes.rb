@@ -1,9 +1,15 @@
 Scoreupgolf::Application.routes.draw do
+
   root :to => 'portal/index#index'
 
   get "session/login"
   get "session/callback"
   get "session/destroy"
+
+  namespace :portal do 
+    get "index/index"
+    get "friend/index"
+  end
 
   namespace :competition do 
     get 'play/index'

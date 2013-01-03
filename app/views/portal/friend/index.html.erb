@@ -1,0 +1,8 @@
+
+<ul data-filter="true" data-role="listview" data-inset="true">
+  <!--  <li data-role="list-divider">参考サイト一覧</li> -->
+  <% @friends.each do |f| %>
+    <li><%= link_to("#", name: f.id) do %> <h3><%= f.name %></h3><% end %></li> 
+  <% end %>
+</ul>
+<%= link_to "トップへ", root_path, :"data-role" => "button" %>

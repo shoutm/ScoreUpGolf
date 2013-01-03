@@ -33,6 +33,17 @@ competition3:
   host_user_id:         1
   state:                30
 
+
+competition_morimoto:
+  id:                   101
+  name:                 "コンペ101"
+  golf_field_id:        1
+  competition_date:     "2012-01-01 00:00:00"
+  firsthalf_cource_id:  11
+  secondhalf_cource_id: 12
+  host_user_id:         101
+  state:                30
+
 one:
   id: 100001
   name: MyString

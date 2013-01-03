@@ -87,9 +87,9 @@ player3_1_1:
 
 player_morimoto:
   id:       100
-  party_id: 23
-  user_id:  100
-  state:   50
+  party_id: 101
+  user_id:  101
+  state:   20
 
 one:
   id: 100001

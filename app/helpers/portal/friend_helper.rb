@@ -1,0 +1,2 @@
+module Portal::FriendHelper
+end

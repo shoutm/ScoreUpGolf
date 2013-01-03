@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216082752) do
+ActiveRecord::Schema.define(:version => 20121229082711) do
 
   create_table "competitions", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(:version => 20121216082752) do
   add_index "competitions", ["firsthalf_cource_id"], :name => "fk_competitions__firsthalf_cource_id"
   add_index "competitions", ["golf_field_id"], :name => "fk_competitions__golf_field_id"
   add_index "competitions", ["secondhalf_cource_id"], :name => "fk_competitions__secondhalf_cource_id"
+
+  create_table "friend_relations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.integer  "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friend_relations", ["friend_id"], :name => "index_friend_relations_on_friend_id"
+  add_index "friend_relations", ["user_id", "friend_id"], :name => "index_friend_relations_on_user_id_and_friend_id", :unique => true
+  add_index "friend_relations", ["user_id"], :name => "index_friend_relations_on_user_id"
 
   create_table "golf_cources", :force => true do |t|
     t.string   "name"
