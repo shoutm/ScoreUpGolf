@@ -1,0 +1,14 @@
+<section data-role="navbar">
+  <ul>
+    <% if request.path_info == portal_friend_index_path %>
+      <li><%= link_to "あなたのゴルフレ", portal_friend_index_path, class: "ui-btn-active ui-state-persist" %></li>
+    <% else %>
+      <li><%= link_to "あなたのゴルフレ", portal_friend_index_path %></li>
+    <% end %>
+    <% if request.path_info == portal_friend_search_path %>
+      <li><%= link_to "ゴルフレ検索", portal_friend_search_path, class: "ui-btn-active ui-state-persist" %></li>
+    <% else %>
+      <li><%= link_to "ゴルフレ検索", portal_friend_search_path %></li>
+    <% end %>
+  </ul>
+</section>

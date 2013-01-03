@@ -3,4 +3,7 @@ class Portal::FriendController < ApplicationController
     @friends = @user.friends
   end
 
+  def search 
+  end
+
 end

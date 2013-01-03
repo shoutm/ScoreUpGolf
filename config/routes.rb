@@ -9,6 +9,7 @@ Scoreupgolf::Application.routes.draw do
   namespace :portal do 
     get "index/index"
     get "friend/index"
+    get "friend/search"
   end
 
   namespace :competition do 
