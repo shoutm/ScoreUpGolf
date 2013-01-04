@@ -2,8 +2,7 @@ class Service::UserServiceController < ApplicationController
   # == 概要
   # 引数に指定された属性を元にUser検索を実施する。
   # 指定された属性に対してlike検索を実施する。
-  # 該当するUserが存在しない場合、[]を返す
-  # 必要な引数が与えられない場合、nullを返す
+  # 該当するUserが存在しない場合、必要な引数が与えられない場合はnullを返す
   #
   # == 引数
   # name
@@ -35,6 +34,7 @@ class Service::UserServiceController < ApplicationController
     end
     
     users = User.find(:all, conditions: search_cond, select: [:id, :name, :email])
+    users = nil if users == []
 
     respond_to do |format|
       format.json { render json: users } 

@@ -20,7 +20,7 @@ class Service::UserServiceControllerTest < ActionController::TestCase
 
   test "should search null when there are no users matching given conditions" do
     get :search, {format: "json", name: "Henohenomoheji"}, {user_id: 1}
-    assert_equal @response.body, "[]"
+    assert_equal @response.body, "null"
     assert_response :success
   end
 
