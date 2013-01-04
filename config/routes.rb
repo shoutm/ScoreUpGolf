@@ -1,5 +1,4 @@
 Scoreupgolf::Application.routes.draw do
-
   root :to => 'portal/index#index'
 
   get "session/login"
@@ -25,6 +24,7 @@ Scoreupgolf::Application.routes.draw do
     get  "competition_service/get_holes"
     get  "competition_service/get_parties"
     get  "party_service/get_party_with_user"
+    get  "user_service/search"
   end
 
   namespace :scaffold do

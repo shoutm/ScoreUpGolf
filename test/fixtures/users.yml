@@ -84,20 +84,20 @@ morimoto:
 one:
   id: 100001
   name: User1
-  email: MyString
+  email: user1_test@test.com
   password: MyString
   role: 200
 
 two:
   id: 100002
   name: User2
-  email: MyString
+  email: user2_test@test.com
   password: MyString
   role: 200
 
 three:
   id: 100003
-  name: MyString
-  email: MyString
+  name: User3
+  email: user3_test@test.com
   password: MyString
   role: 200

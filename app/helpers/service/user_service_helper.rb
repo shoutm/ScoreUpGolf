@@ -1,0 +1,2 @@
+module Service::UserServiceHelper
+end
