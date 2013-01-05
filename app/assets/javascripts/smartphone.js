@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require jquery.activity-indicator-1.0.0.min.js
 //= require jqm_setup
-//= require jquery.mobile-1.2.0.min.js
+//= require jquery.mobile-1.2.0.js
 //= require_tree ./utils
 //= require_tree ./models
 
