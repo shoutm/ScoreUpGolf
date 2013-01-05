@@ -1,7 +1,11 @@
 <%= render "navbar" %>
 <h2>ゴルフレを名前で検索:</h2>
-<input type="text" name="name" id="basic" value=""  />
-<br>
-<br>
+<input id="search_input" type="search" name="name" id="basic" value="" />
+<button id="search">検索</button>
+<section id="search_result">
+  <ul id="search_result_ul" data-role="listview" data-inset="true">
+  </ul>
+
+</section>
 <br>
 <%= link_to "トップへ", root_path, :"data-role" => "button" %>
