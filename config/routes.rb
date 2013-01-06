@@ -25,6 +25,7 @@ Scoreupgolf::Application.routes.draw do
     get  "competition_service/get_parties"
     get  "party_service/get_party_with_user"
     get  "user_service/search"
+    get  "user_service/search_with_friendstate"
   end
 
   namespace :scaffold do
