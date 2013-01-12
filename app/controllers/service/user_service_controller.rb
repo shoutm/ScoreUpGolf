@@ -86,19 +86,11 @@ class Service::UserServiceController < ApplicationController
     users = User.find(:all, conditions: search_cond, select: [:id, :name, :email])
     if users == [] then render json: nil; return end
 
-    join_cond = "inner join friend_relations on users.id = friend_relations.user_id"
-    search_cond[0].gsub! /id/, "users.id"
-    search_cond[0].gsub! /name/, "users.name"
-    search_cond[0].gsub! /email/, "users.email"
-    search_cond[0].concat " and friend_relations.friend_id = ?"
-    search_cond << @user.id
-
-    rel_users = User.find(:all, joins: join_cond, conditions: search_cond)
-    rel_users_hash = {}
-    rel_users.each do |rel_user| rel_users_hash[rel_user.id] = rel_user.friend_relations[0].state end
+    fr_hash = {}
+    @user.friend_relations.each do |fr| fr_hash[fr.friend_id] = fr.state end
 
     users_json = JSON.parse(users.to_json)
-    users_json.each do |user_json| user_json["friend_state"] = rel_users_hash[user_json["id"]] if rel_users_hash[user_json["id"]] end
+    users_json.each do |user_json| user_json["friend_state"] = fr_hash[user_json["id"]] if fr_hash[user_json["id"]] end
 
     respond_to do |format|
       format.json { render json: users_json } 

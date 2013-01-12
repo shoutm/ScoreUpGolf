@@ -1,0 +1,42 @@
+<%= render "navbar" %>
+<% if @friend %>
+  <section id="user_info1">
+    <div id="picture">
+      <%= image_tag "no_pictures.jpg", width: "100%" %>
+    </div>
+    <div id="name">
+      <%= @friend.name %>
+    </div>
+    <% if @friend_state %>
+    <div id="state">
+      <% case @friend_state %>
+        <% when 10 %>
+          ゴルフレ申請中
+        <% when 20 %>
+          ゴルフレ申請受領中
+        <% when 30 %>
+          ゴルフレ
+        <% when 40 %>
+        <% when 50 %>
+          ゴルフレ申請拒否中
+      <% end %>
+    </div>
+    <% end %>
+  </section>
+  <% if !@friend_state || @friend_state == 40 %>
+    <button id="request">ゴルフレ申請</button>
+  <% elsif @friend_state == 10 %>
+    <button id="cancel">ゴルフレ申請取下</button>
+  <% elsif @friend_state == 20 %>
+    <button id="accept">ゴルフレ承認</button>
+    <button id="deny">ゴルフレ拒否</button>
+  <% elsif @friend_state == 30 %>
+    <button id="cancel">ゴルフレ解消</button>
+  <% else %>
+    <button id="accept">ゴルフレ承認</button>
+  <% end %>
+<% else %>
+  <h2 id="error">エラー：ユーザが存在しません。</h2>
+<% end %>
+<br>
+<%= link_to "トップへ", root_path, :"data-role" => "button" %>

@@ -1,3 +1,42 @@
 // Place all the styles related to the Portal::Friend controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user_info1 {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  #picture {
+    padding: 10px;
+    width: 40%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    display: inline;
+  }
+
+  #name {
+    padding: 20px 0px 0px 10px;
+    width: 60%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    display: inline;
+    font-size: large;
+    font: bold;
+    font-weight: bold;
+  }
+
+  #state {
+    margin: 5px;
+    padding: 5px;
+    float: left;
+    box-sizing: border-box;
+    display: inline;
+    font-weight: bold;
+    border: solid 1px #E3E3E3;
+    border-radius: 10px;
+    background-color: white;
+  }
+}

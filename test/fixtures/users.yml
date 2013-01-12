@@ -101,3 +101,24 @@ three:
   email: user3_test@test.com
   password: MyString
   role: 200
+
+four:
+  id: 100004
+  name: User4
+  email: user4_test@test.com
+  password: MyString
+  role: 200
+
+five:
+  id: 100005
+  name: User5
+  email: user5_test@test.com
+  password: MyString
+  role: 200
+
+six:
+  id: 100006
+  name: User6
+  email: user6_test@test.com
+  password: MyString
+  role: 200

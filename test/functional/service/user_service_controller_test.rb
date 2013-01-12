@@ -20,10 +20,13 @@ class Service::UserServiceControllerTest < ActionController::TestCase
 
   test "should search users with friend_state" do
     get :search_with_friendstate, {format: "json", name: "User", email: "_test@test.com"}, {user_id: 100001}
-    users = JSON.parse(@response.body) # This contains users whom id are 10000[2,3] and 100002 has a freind_state flag.
+    users = JSON.parse(@response.body) 
     assert_nil(users.find do |user| user["id"] == 100001 end)
     assert_not_nil(users.find do |user| user["id"] == 100002 && user["name"] == "User2" && user["email"] == "user2_test@test.com" && user["friend_state"] == FriendRelation::State::BE_FRIENDS end)
-    assert_not_nil(users.find do |user| user["id"] == 100003 && user["name"] == "User3" && user["email"] == "user3_test@test.com" && user["friend_state"] == nil end)
+    assert_not_nil(users.find do |user| user["id"] == 100003 && user["name"] == "User3" && user["email"] == "user3_test@test.com" && user["friend_state"] == FriendRelation::State::REQUESTING end)
+    assert_not_nil(users.find do |user| user["id"] == 100004 && user["name"] == "User4" && user["email"] == "user4_test@test.com" && user["friend_state"] == FriendRelation::State::BE_REQUESTED end)
+    assert_not_nil(users.find do |user| user["id"] == 100005 && user["name"] == "User5" && user["email"] == "user5_test@test.com" && user["friend_state"] == FriendRelation::State::BREAKED_OFF end)
+    assert_not_nil(users.find do |user| user["id"] == 100006 && user["name"] == "User6" && user["email"] == "user6_test@test.com" && user["friend_state"] == FriendRelation::State::DENIED end)
   end
 
   test "should search null when there are no users matching given conditions" do

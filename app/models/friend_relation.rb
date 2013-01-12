@@ -6,9 +6,10 @@ class FriendRelation < ActiveRecord::Base
   validates :friend_id, presence: true
 
   class State 
-    REQUESTING  = 10
-    BE_FRIENDS  = 20
-    BREAKED_OFF = 30
-    DINIED      = 40
+    REQUESTING   = 10
+    BE_REQUESTED = 20
+    BE_FRIENDS   = 30
+    BREAKED_OFF  = 40
+    DENIED       = 50
   end
 end
