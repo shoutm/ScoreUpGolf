@@ -63,3 +63,14 @@ window.hide_loading_icon = ->
   $("#loading_icon_layer").activity(false)
 
 
+# URLのパラメータを返す
+# 使い方: 
+#  getUrlVars()["param1"]
+window.getUrlVars = ->
+  vars = []
+  hashes = location.href.slice(location.href.indexOf("?") + 1).split("&")
+  for tmp in hashes
+    hash = tmp.split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  return vars

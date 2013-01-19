@@ -122,3 +122,10 @@ six:
   email: user6_test@test.com
   password: MyString
   role: 200
+
+seven:
+  id: 100007
+  name: User7
+  email: user7_test@test.com
+  password: MyString
+  role: 200

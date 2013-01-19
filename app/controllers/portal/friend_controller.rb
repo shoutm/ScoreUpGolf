@@ -1,6 +1,8 @@
 class Portal::FriendController < ApplicationController
   def index
-    @friends = @user.friends
+    frs = @user.friend_relations.find_all do |fr| fr.state == FriendRelation::State::BE_FRIENDS end
+    @friends = []
+    frs.each do |fr| @friends << fr.friend end
   end
 
   def search 

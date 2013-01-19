@@ -7,7 +7,7 @@
     <div id="name">
       <%= @friend.name %>
     </div>
-    <% if @friend_state %>
+    <% if @friend_state && @friend_state != 40%>
     <div id="state">
       <% case @friend_state %>
         <% when 10 %>
@@ -24,7 +24,7 @@
     <% end %>
   </section>
   <% if !@friend_state || @friend_state == 40 %>
-    <button id="request">ゴルフレ申請</button>
+    <button id="apply">ゴルフレ申請</button>
   <% elsif @friend_state == 10 %>
     <button id="cancel">ゴルフレ申請取下</button>
   <% elsif @friend_state == 20 %>

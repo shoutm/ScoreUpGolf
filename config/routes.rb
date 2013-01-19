@@ -27,6 +27,10 @@ Scoreupgolf::Application.routes.draw do
     get  "party_service/get_party_with_user"
     get  "user_service/search"
     get  "user_service/search_with_friendstate"
+    get  "friend_service/apply"
+    get  "friend_service/accept"
+    get  "friend_service/cancel"
+    get  "friend_service/deny"
   end
 
   namespace :scaffold do
