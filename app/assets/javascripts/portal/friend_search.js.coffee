@@ -7,6 +7,10 @@ $ ->
   callback = (data, status) ->
     $("#search_result_ul").html("")
     result_html = ""
+    if data == null
+      alert "該当ユーザは存在しません。"
+      $.mobile.loading('hide')
+      return 
     for user in data
       state = ""
       switch user.friend_state

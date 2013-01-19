@@ -4,6 +4,7 @@ class Portal::IndexControllerTest < ActionController::TestCase
   test "should get index" do
     get :index, nil, {user_id: 1}
     assert_select "a[name=golf_friend_list]"
+    assert_select "a[name=golf_friend_search]"
     assert_response :success
   end
 
