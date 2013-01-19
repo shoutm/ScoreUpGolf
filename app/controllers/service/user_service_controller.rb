@@ -3,6 +3,7 @@ class Service::UserServiceController < ApplicationController
   # 引数に指定された属性を元にUser検索を実施する。
   # 指定された属性に対してlike検索を実施する。
   # 該当するUserが存在しない場合、必要な引数が与えられない場合はnullを返す
+  # ただし、Roleが管理者のユーザは返さない
   #
   # == 引数
   # name
@@ -22,15 +23,18 @@ class Service::UserServiceController < ApplicationController
     if params[:name] == nil && params[:email] == nil 
       render json: nil ; return
     elsif params[:name] != nil && params[:email] == nil
-      search_cond << "name like ?"
+      search_cond << "name like ? and role = ?"
       search_cond << "%" + params[:name] + "%"
+      search_cond << User::Role::User
     elsif params[:name] == nil && params[:email] != nil
-      search_cond << "email like ?"
+      search_cond << "email like ? and role = ?"
       search_cond << "%" + params[:email] + "%"
+      search_cond << User::Role::User
     else
-      search_cond << "name like ? and email like ?"
+      search_cond << "name like ? and email like ? and role = ?"
       search_cond << "%" + params[:name] + "%"
       search_cond << "%" + params[:email] + "%"
+      search_cond << User::Role::User
     end
     
     users = User.find(:all, conditions: search_cond, select: [:id, :name, :email])
@@ -49,6 +53,7 @@ class Service::UserServiceController < ApplicationController
   # 結果には検索を実施したユーザ自身の情報は含めない。
   # 結果には検索を実施したユーザとのfriend関係を示すフラグも含める。
   # 該当するUserが存在しない場合、必要な引数が与えられない場合はnullを返す
+  # ただし、Roleが管理者のユーザは返さない
   #
   # == 引数
   # name
@@ -69,18 +74,21 @@ class Service::UserServiceController < ApplicationController
     if params[:name] == nil && params[:email] == nil 
       render json: nil ; return
     elsif params[:name] != nil && params[:email] == nil
-      search_cond << "id != ? and name like ?"
+      search_cond << "id != ? and name like ? and role = ?"
       search_cond << @user.id
       search_cond << "%" + params[:name] + "%"
+      search_cond << User::Role::User
     elsif params[:name] == nil && params[:email] != nil
-      search_cond << "id != ? and email like ?"
+      search_cond << "id != ? and email like ? and role = ?"
       search_cond << @user.id
       search_cond << "%" + params[:email] + "%"
+      search_cond << User::Role::User
     else
-      search_cond << "id != ? and name like ? and email like ?"
+      search_cond << "id != ? and name like ? and email like ? and role = ?"
       search_cond << @user.id
       search_cond << "%" + params[:name] + "%"
       search_cond << "%" + params[:email] + "%"
+      search_cond << User::Role::User
     end
     
     users = User.find(:all, conditions: search_cond, select: [:id, :name, :email])

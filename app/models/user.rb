@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :role, presence: true
+
+  class Role
+    Admin = 100
+    User  = 200
+  end
 end
