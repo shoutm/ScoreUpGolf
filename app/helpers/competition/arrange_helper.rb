@@ -1,0 +1,2 @@
+module Competition::ArrangeHelper
+end

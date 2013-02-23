@@ -1,0 +1,42 @@
+<h2>コンペを作成:</h2>
+<section id="arrange">
+<div id="competition_date">
+  <label>日時</label>
+  <div id="data_input">
+    <fieldset data-role="controlgroup" data-type="horizontal"> 
+      <select id="year" name="year">
+        <% @years.each do |y| %>
+            <% if y == @today.year %>
+            <option value="<%= y %>" selected=true><%= y %></option>
+          <% else %>
+            <option value="<%= y %>"><%= y %></option>
+          <% end %>
+        <% end %>
+      </select>
+      <select id="month" name="month">
+        <% @months.each do |m| %>
+          <% if m == @today.month %>
+            <option value="<%= m %>" selected=true><%= m %></option>
+          <% else %>
+            <option value="<%= m %>"><%= m %></option>
+          <% end %>
+        <% end %>
+      </select>
+      <select id="day" name="day">
+        <% @days.each do |d| %>
+          <% if d == @today.day %>
+            <option value="<%= d %>" selected=true><%= d %></option>
+          <% else %>
+            <option value="<%= d %>"><%= d %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </fieldset>
+  </div>
+</div>
+<div id="players">
+  <input id="player_search" type="text" data-mini="true"/>
+  <table id="player_search_result">
+  </table>
+</div>
+</section>

@@ -17,6 +17,8 @@ Scoreupgolf::Application.routes.draw do
     post 'play/view'
     get 'play/wait'
     get 'play/finish'
+
+    get "arrange/index"
   end
 
   namespace :service do

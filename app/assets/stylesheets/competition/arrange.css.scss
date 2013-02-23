@@ -1,0 +1,56 @@
+// Place all the styles related to the Competition::ArrangeController controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+hr {
+  margin: 0;
+  border-top: 1px solid #CACACA;
+}
+
+#competition_date {
+  display: table;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #CACACA;
+  border-left: 1px solid #CACACA;
+  border-right: 1px solid #CACACA;
+  background-color: #F5F5F5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  label {
+    display: table-cell;
+    vertical-align: middle;
+    width: 10%;
+  }
+
+  div#data_input {
+    display: table-cell;
+    width: 90%;
+  }
+}
+
+#players {
+  display: table;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #CACACA;
+  border-left: 1px solid #CACACA;
+  border-right: 1px solid #CACACA;
+  border-bottom: 1px solid #CACACA;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #F5F5F5;
+
+  #player_search {
+    margin: 10px;
+    width: 300px;
+  }
+
+  #player_search_result {
+    position: absolute;
+    top: 222px;
+    left: 15px;
+    border: solid 1px #CACACA;
+  }
+}
