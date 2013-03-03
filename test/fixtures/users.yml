@@ -70,9 +70,15 @@ admin:
   password: "password"
   role:     100
 
+admin_friend:
+  id:       101
+  name:     "かんりしゃの友人"
+  email:    "admin_friend@test.com"
+  password: "password"
+  role:     200
 
 morimoto:
-  id:       101
+  id:       201
   name:     "morimoto"
   email:    "shouta.morimoto@gmail.com"
   password: "password"

@@ -106,4 +106,61 @@ class Service::UserServiceController < ApplicationController
   rescue ActiveRecord::RecordNotFound => e
     render json: nil
   end
+
+  # == 概要
+  # 引数に指定された属性を元にUser検索を実施する。
+  # 指定された属性に対してlike検索を実施する。
+  # 本APIを実行したユーザと友人間系にあるユーザのみを返す。
+  # 結果には検索を実施したユーザ自身の情報は含めない。
+  # 該当するUserが存在しない場合、必要な引数が与えられない場合はnullを返す
+  #
+  # == 引数
+  # name
+  # email
+  #
+  # == 出力例
+  # [
+  #   {
+  #     "id": 1234,
+  #     "name": "User1",
+  #     "email": "user1@gmail.com"
+  #   },
+  #   ...
+  # ]
+  def search_friend
+    search_cond = []
+    if params[:name] == nil && params[:email] == nil 
+      render json: nil ; return
+    elsif params[:name] != nil && params[:email] == nil
+      search_cond << "users.id != ? and users.name like ? and users.role = ? and friend_relations.state = ?"
+      search_cond << @user.id
+      search_cond << "%" + params[:name] + "%"
+      search_cond << User::Role::User
+      search_cond << FriendRelation::State::BE_FRIENDS 
+    elsif params[:name] == nil && params[:email] != nil
+      search_cond << "users.id != ? and users.email like ? and users.role = ? and friend_relations.state = ?"
+      search_cond << @user.id
+      search_cond << "%" + params[:email] + "%"
+      search_cond << User::Role::User
+      search_cond << FriendRelation::State::BE_FRIENDS 
+    else
+      search_cond << "users.id != ? and users.name like ? and users.email like ? and users.role = ? and friend_relations.state = ?"
+      search_cond << @user.id
+      search_cond << "%" + params[:name] + "%"
+      search_cond << "%" + params[:email] + "%"
+      search_cond << User::Role::User
+      search_cond << FriendRelation::State::BE_FRIENDS 
+    end
+
+    users = User.find(:all, joins: "inner join friend_relations on users.id = friend_relations.friend_id", 
+                      conditions: search_cond, 
+                      select: [:"users.id", :"users.name", :"users.email"])
+    if users == [] then render json: nil; return end
+
+    respond_to do |format|
+      format.json { render json: users } 
+    end
+  rescue ActiveRecord::RecordNotFound => e
+    render json: nil
+  end
 end

@@ -50,6 +50,48 @@ class Service::UserServiceControllerTest < ActionController::TestCase
     assert_equal @response.body, "null"
   end
 
+  test "should search friend" do
+    # a case that user's name is specified.
+    get :search_friend, {format: "json", name: "User"}, {user_id: 100001}
+    users = JSON.parse(@response.body) 
+    assert_nil(users.find do |user| user["id"] == 100001 end)
+    assert_not_nil(users.find do |user| user["id"] == 100002 && user["name"] == "User2" && user["email"] == "user2_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100003 && user["name"] == "User3" && user["email"] == "user3_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100004 && user["name"] == "User4" && user["email"] == "user4_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100005 && user["name"] == "User5" && user["email"] == "user5_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100006 && user["name"] == "User6" && user["email"] == "user6_test@test.com" end)
+
+    # a case that user's email is specified.
+    get :search_friend, {format: "json", email: "_test@test.com"}, {user_id: 100001}
+    users = JSON.parse(@response.body) 
+    assert_nil(users.find do |user| user["id"] == 100001 end)
+    assert_not_nil(users.find do |user| user["id"] == 100002 && user["name"] == "User2" && user["email"] == "user2_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100003 && user["name"] == "User3" && user["email"] == "user3_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100004 && user["name"] == "User4" && user["email"] == "user4_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100005 && user["name"] == "User5" && user["email"] == "user5_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100006 && user["name"] == "User6" && user["email"] == "user6_test@test.com" end)
+   
+    # a case that user's name and email are specified.
+    get :search_friend, {format: "json", name: "User", email: "_test@test.com"}, {user_id: 100001}
+    users = JSON.parse(@response.body) 
+    assert_nil(users.find do |user| user["id"] == 100001 end)
+    assert_not_nil(users.find do |user| user["id"] == 100002 && user["name"] == "User2" && user["email"] == "user2_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100003 && user["name"] == "User3" && user["email"] == "user3_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100004 && user["name"] == "User4" && user["email"] == "user4_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100005 && user["name"] == "User5" && user["email"] == "user5_test@test.com" end)
+    assert_nil(users.find do |user| user["id"] == 100006 && user["name"] == "User6" && user["email"] == "user6_test@test.com" end)
+
+    # should not get admin user
+    get :search_friend, {format: "json", name: "管理者"}, {user_id: 101}
+    assert_equal @response.body, "null"
+
+    get :search_friend, {format: "json", email: "admin@test.com"}, {user_id: 101}
+    assert_equal @response.body, "null"
+
+    get :search_friend, {format: "json", name: "管理者", email: "admin@test.com"}, {user_id: 101}
+    assert_equal @response.body, "null"
+  end
+
   test "should search null when there are no users matching given conditions" do
     get :search, {format: "json", name: "Henohenomoheji"}, {user_id: 1}
     assert_equal @response.body, "null"
