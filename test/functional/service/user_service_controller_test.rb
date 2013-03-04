@@ -101,6 +101,11 @@ class Service::UserServiceControllerTest < ActionController::TestCase
     get :search_with_friendstate, {format: "json", name: "Henohenomoheji"}, {user_id: 1}
     assert_equal @response.body, "null"
     assert_response :success
+
+    # A test for a method of search_friend
+    get :search_friend, {format: "json", name: "Henohenomoheji"}, {user_id: 1}
+    assert_equal @response.body, "null"
+    assert_response :success
   end
 
   test "should search null when required parameters are not given" do
@@ -110,6 +115,11 @@ class Service::UserServiceControllerTest < ActionController::TestCase
 
     # A test for a method of search_with_friend_state
     get :search_with_friendstate, {format: "json"}, {user_id: 1}
+    assert_equal @response.body, "null"
+    assert_response :success
+
+    # A test for a method of search_friend
+    get :search_friend, {format: "json"}, {user_id: 1}
     assert_equal @response.body, "null"
     assert_response :success
   end

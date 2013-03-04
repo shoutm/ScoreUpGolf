@@ -132,24 +132,27 @@ class Service::UserServiceController < ApplicationController
     if params[:name] == nil && params[:email] == nil 
       render json: nil ; return
     elsif params[:name] != nil && params[:email] == nil
-      search_cond << "users.id != ? and users.name like ? and users.role = ? and friend_relations.state = ?"
+      search_cond << "users.id != ? and users.name like ? and users.role = ? and friend_relations.state = ? and friend_relations.user_id = ?"
       search_cond << @user.id
       search_cond << "%" + params[:name] + "%"
       search_cond << User::Role::User
       search_cond << FriendRelation::State::BE_FRIENDS 
+      search_cond << @user.id
     elsif params[:name] == nil && params[:email] != nil
-      search_cond << "users.id != ? and users.email like ? and users.role = ? and friend_relations.state = ?"
+      search_cond << "users.id != ? and users.email like ? and users.role = ? and friend_relations.state = ? and friend_relations.user_id = ?"
       search_cond << @user.id
       search_cond << "%" + params[:email] + "%"
       search_cond << User::Role::User
       search_cond << FriendRelation::State::BE_FRIENDS 
+      search_cond << @user.id
     else
-      search_cond << "users.id != ? and users.name like ? and users.email like ? and users.role = ? and friend_relations.state = ?"
+      search_cond << "users.id != ? and users.name like ? and users.email like ? and users.role = ? and friend_relations.state = ? and friend_relations.user_id = ?"
       search_cond << @user.id
       search_cond << "%" + params[:name] + "%"
       search_cond << "%" + params[:email] + "%"
       search_cond << User::Role::User
       search_cond << FriendRelation::State::BE_FRIENDS 
+      search_cond << @user.id
     end
 
     users = User.find(:all, joins: "inner join friend_relations on users.id = friend_relations.friend_id", 
