@@ -19,6 +19,8 @@ Scoreupgolf::Application.routes.draw do
     get 'play/finish'
 
     get "arrange/index"
+    post "arrange/confirm"
+    post "arrange/finish"
   end
 
   namespace :service do
@@ -34,6 +36,8 @@ Scoreupgolf::Application.routes.draw do
     get  "friend_service/accept"
     get  "friend_service/cancel"
     get  "friend_service/deny"
+    get  "golf_field_service/search"
+    get  "golf_cource_service/get_cources"
   end
 
   namespace :scaffold do

@@ -41,3 +41,16 @@ html, body {
   font-weight: bold;
 }
 
+#notice ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+  color: red;
+  font-weight: bold;
+}
+
+#notice li {
+  margin: 0;
+  padding: 0;
+}
+

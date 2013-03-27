@@ -1,0 +1,47 @@
+<h2>コンペの確認:</h2>
+<%= form_tag controller: :arrange, action: :finish do -%>
+<section id="arrange">
+<div id="competition_name_section" class="wrapper">
+  <label id="header">コンペ名</label>
+  <div class="inner_wrapper">
+    <%= @competition_name %>
+    <%= hidden_field_tag "competition_name", @competition_name %>
+  </div>
+</div>
+
+<div id="competition_date_section" class="wrapper">
+  <label id="header">コンペ日時</label>
+  <div class="inner_wrapper">
+    <%= @competition_date %>
+    <%= hidden_field_tag "year", @competition_date.year %>
+    <%= hidden_field_tag "month", @competition_date.month %>
+    <%= hidden_field_tag "day", @competition_date.day %>
+  </div>
+</div>
+
+<div id="players_section" class="wrapper">
+  <label id="header">プレイヤー</label>
+  <div class="inner_wrapper">
+    <% @users.each_with_index do |user, i| %>
+      プレイヤー<%= i+1 %>: <%= user.name %><br />
+      <%= hidden_field_tag "user" + (i+1).to_s + "_id", user.id %>
+    <% end %>
+  </div>
+</div>
+
+<div id="golf_field_section" class="wrapper">
+  <label id="header">ゴルフ場</label>
+  <div class="inner_wrapper">
+    ゴルフ場: <%= @golf_field.name %><br />
+    前半ハーフコース: <%= @firsthalf_cource.name %><br />
+    後半ハーフコース: <%= @secondhalf_cource.name %>
+    <%= hidden_field_tag "golf_field_id", @golf_field.id %>
+    <%= hidden_field_tag "firsthalf_cource_id", @firsthalf_cource.id %>
+    <%= hidden_field_tag "secondhalf_cource_id", @secondhalf_cource.id %>
+  </div>
+</div>
+こちらでよろしいでしょうか？
+<%= submit_tag "決定" %>
+<%= link_to "トップへ", root_path, :"data-role" => "button" %>
+</section>
+<% end -%>

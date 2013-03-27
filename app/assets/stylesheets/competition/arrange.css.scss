@@ -2,55 +2,91 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-hr {
-  margin: 0;
-  border-top: 1px solid #CACACA;
+#arrange {
+  padding: 5px;
 }
 
-#competition_date {
-  display: table;
-  width: 100%;
+.wrapper {
   text-align: center;
-  border-top: 1px solid #CACACA;
-  border-left: 1px solid #CACACA;
-  border-right: 1px solid #CACACA;
+  border: 1px solid #CACACA;
   background-color: #F5F5F5;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-
-  label {
-    display: table-cell;
-    vertical-align: middle;
-    width: 10%;
-  }
-
-  div#data_input {
-    display: table-cell;
-    width: 90%;
-  }
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-#players {
-  display: table;
-  width: 100%;
+.wrapper2 {
   text-align: center;
-  border-top: 1px solid #CACACA;
-  border-left: 1px solid #CACACA;
-  border-right: 1px solid #CACACA;
-  border-bottom: 1px solid #CACACA;
+  border: 1px solid #CACACA;
+  background-color: #F5F5F5;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: #F5F5F5;
+  margin-bottom: 15px;
+}
 
-  #player_search {
-    margin: 10px;
-    width: 300px;
+.inner_wrapper {
+  padding: 10px;
+}
+
+.inner_wrapper2 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#competition_date_section {
+  #competition_date {
+    width: 100%;
   }
 
-  #player_search_result {
-    position: absolute;
-    top: 222px;
-    left: 15px;
-    border: solid 1px #CACACA;
+  fieldset {
+    display: border-box;
   }
 }
+
+.search_input {
+  width: 100%;
+}
+
+.search_result {
+  text-align: left;
+  border: solid 1px #CACACA;
+  background-color: white;
+  border-collapse: collapse;
+  width: 100%;
+
+  tr {
+    height: 50px;
+    border-bottom: solid 1px #CACACA;
+  }
+
+  td {
+    padding: 10px;
+  }
+}
+
+.loading {
+  background-image: url("/assets/ajax-loader.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: gray !important;
+  opacity: .18;
+  height: 100px;
+  width: 100%;
+}
+
+label#header {
+  width: 100%;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-image: -webkit-linear-gradient( #5393c5 ,#6facd5);
+  background-image: -moz-linear-gradient( #5393c5 ,#6facd5);
+  background-image: linear-gradient( #5393c5 ,#6facd5);
+  text-shadow: 0 1px 1px #3373a5;
+  color: #fff;
+  vertical-align: middle;
+}
+

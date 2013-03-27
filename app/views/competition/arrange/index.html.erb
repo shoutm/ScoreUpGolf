@@ -1,12 +1,29 @@
+<% if flash[:alert] %>
+<div id="notice">
+  <ul>
+  <% flash[:alert].each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+</div>
+<% end %>
 <h2>コンペを作成:</h2>
+<%= form_tag controller: :arrange, action: :confirm do -%>
 <section id="arrange">
-<div id="competition_date">
-  <label>日時</label>
-  <div id="data_input">
+<div id="competition_name_section" class="wrapper">
+  <label id="header">コンペ名</label>
+  <div class="inner_wrapper">
+    <input id="competition_name" name="competition_name" type="text" data-mini="true"/>
+  </div>
+</div>
+
+<div id="competition_date_section" class="wrapper">
+  <label id="header">コンペ日時</label>
+  <div id="competition_date" class="inner_wrapper inner_wrapper2">
     <fieldset data-role="controlgroup" data-type="horizontal"> 
       <select id="year" name="year">
         <% @years.each do |y| %>
-            <% if y == @today.year %>
+          <% if y == @today.year %>
             <option value="<%= y %>" selected=true><%= y %></option>
           <% else %>
             <option value="<%= y %>"><%= y %></option>
@@ -34,9 +51,45 @@
     </fieldset>
   </div>
 </div>
-<div id="players">
-  <input id="player_search" type="text" data-mini="true"/>
-  <table id="player_search_result">
-  </table>
+
+<div id="players_section" class="wrapper">
+  <label id="header">プレイヤー</label>
+  <div class="inner_wrapper">
+    <div id="players">
+      <button name="user1_id" data-role="button" data-mini="true" data-inline="true" onclick="return false;"><%= @user.name %></button>
+      <input type="hidden" name="user1_id" value="<%= @user.id %>" />
+    </div>
+    プレイヤー名を入力:
+    <input id="player_search" class="search_input" type="text" data-mini="true"/>
+    <table id="player_search_result" class="search_result">
+    </table>
+  </div>
 </div>
+
+<div id="golf_field_section" class="wrapper">
+  <label id="header">ゴルフ場</label>
+  <div class="inner_wrapper">
+    <div id="golf_field"></div>
+    ゴルフ場名を入力:
+    <input id="golf_field_search" class="search_input" type="text" data-mini="true"/>
+    <table id="golf_field_search_result" class="search_result">
+    </table>
+  </div>
+  <div id="firsthalf_cource_section" class="inner_wrapper" style="display: none;">
+    <label id="header">前半ハーフコース</label>
+    <div class="inner_wrapper wrapper2">
+      <select name="firsthalf_cource_id" id="firsthalf_cource_id_select" data-mini="true"></select>
+    </div>
+  </div>
+  <div id="secondhalf_cource_section" class="inner_wrapper" style="display: none;">
+    <label id="header">後半ハーフコース</label>
+    <div class="inner_wrapper wrapper2">
+      <select name="secondhalf_cource_id" id="secondhalf_cource_id_select" data-mini="true"></select>
+    </div>
+  </div>
+</div>
+<%= submit_tag "確認" %>
+<%= link_to "トップへ", root_path, :"data-role" => "button" %>
 </section>
+<% end -%>
+

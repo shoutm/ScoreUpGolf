@@ -63,12 +63,12 @@ user9:
   password: "password"
   role:     200
 
-admin:
-  id:       100
-  name:     "管理者1"
-  email:    "admin@test.com"
+user_alone:
+  id:       98
+  name:     "友達いないユーザ"
+  email:    "user99@test.com"
   password: "password"
-  role:     100
+  role:     200
 
 admin_friend:
   id:       99 
@@ -76,6 +76,14 @@ admin_friend:
   email:    "admin_friend@test.com"
   password: "password"
   role:     200
+
+admin:
+  id:       100
+  name:     "管理者1"
+  email:    "admin@test.com"
+  password: "password"
+  role:     100
+
 
 morimoto:
   id:       101

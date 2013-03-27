@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.activity-indicator-1.0.0.min.js
+//= require jquery.textchange.min.js
 //= require_tree ./utils
 //= require_tree ./models
 

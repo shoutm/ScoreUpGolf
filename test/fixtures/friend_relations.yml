@@ -14,6 +14,56 @@ fr_2_1:
   friend_id: 1
   state: 30
 
+fr_1_3:
+  user_id: 1
+  friend_id: 3
+  state: 30
+
+fr_3_1:
+  user_id: 3
+  friend_id: 1
+  state: 30
+
+fr_2_3:
+  user_id: 2
+  friend_id: 3
+  state: 30
+
+fr_3_2:
+  user_id: 3
+  friend_id: 2
+  state: 30
+
+fr_1_4:
+  user_id: 1
+  friend_id: 4
+  state: 30
+
+fr_4_1:
+  user_id: 4
+  friend_id: 1
+  state: 30
+
+fr_2_4:
+  user_id: 2
+  friend_id: 4
+  state: 30
+
+fr_4_2:
+  user_id: 4
+  friend_id: 2
+  state: 30
+
+fr_3_4:
+  user_id: 3
+  friend_id: 4
+  state: 30
+
+fr_4_3:
+  user_id: 4
+  friend_id: 3
+  state: 30
+
 fr_100_101:
   user_id: 100
   friend_id: 101
