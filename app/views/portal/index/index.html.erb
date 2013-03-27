@@ -4,6 +4,9 @@
     <%= image_tag "golfball.gif", size: "15x15" %> <%= link_to notice.msg, notice.uri %><br>
   <% end %>
 </section>
+<section id="competition" data-role="controlgroup">
+  <%= link_to "コンペを作成", competition_arrange_index_path, :"data-role" => "button", name: "competition_arrange" %>
+</section>
 <section id="friend" data-role="controlgroup">
   <%= link_to "あなたのゴルフレ", portal_friend_index_path, :"data-role" => "button", name: "golf_friend_list" %>
   <%= link_to "ゴルフレ検索", portal_friend_search_path, :"data-role" => "button", name: "golf_friend_search" %>
